@@ -2,5 +2,5 @@
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay.MarkerScripts
 {
-    public class Entity : MonoBehaviour { }
+    public abstract class Entity : MonoBehaviour { }
 }
