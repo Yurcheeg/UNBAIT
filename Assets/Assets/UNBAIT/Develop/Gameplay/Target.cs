@@ -6,13 +6,22 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
 {
     public static class Target
     {
-        private static Dictionary<Targets, Type> _targetsToType = new Dictionary<Targets, Type>()
+        private static Dictionary<EntityType, Type> _targetsToType = new Dictionary<EntityType, Type>()
         {
-            {Targets.None, null },
-            {Targets.Cursor, typeof(Player) },
-            {Targets.Hook, typeof(Hook) },
+            {EntityType.None, null },
+            {EntityType.Cursor, typeof(Player) },
+            {EntityType.Hook, typeof(Hook) },
         };
 
-        public static Type GetType(Targets target) => _targetsToType[target];
+        public static Type GetType(EntityType target) => _targetsToType[target];
+    }
+
+    [Flags]
+    public enum EntityType
+    {
+        None = 0b_0000,
+
+        Hook = 0b_0001,
+        Cursor = 0b_0010,
     }
 }

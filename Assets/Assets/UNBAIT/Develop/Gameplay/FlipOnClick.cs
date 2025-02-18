@@ -18,8 +18,8 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
 
         private void Flip()
         {
-            //invert direction
-            _direction *= -1;
+            //TODO: find a better way to invert other than actually hardcoding x
+            _direction.x *= -1;
 
             _spriteRenderer.flipX = true;
         }
@@ -32,6 +32,7 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
             if (collision.gameObject.TryGetComponent<Player>(out _) == false)
                 return;
 
+            //TODO: Rewrite for new Input system
             if (Input.GetMouseButton(0))
                 _hitCountToFlip--;
 
@@ -39,16 +40,12 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
                 Flip();
         }
 
+        //private void Start()
+        //{
+        //    //find closest hook
+        //    //set normalized dir to this hook pos - fish pos
+        //}
 
-        private void Start()
-        {
-            //find closest hook
-            //set normalized dir to this hook pos - fish pos
-        }
-
-        private void Awake()
-        {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
-        }
+        private void Awake() => _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 }
