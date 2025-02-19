@@ -11,12 +11,18 @@ public class Spawner : MonoBehaviour
     {
         foreach (Transform spawnpoint in _spawnPoints)
         {
+            #region Weird angle math which spawner shouldn't be responsible for
             Vector2 direction = (Vector2.zero - (Vector2)spawnpoint.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            //TODO: Rotate on Y axis so the sprites rotate properly (probably clamp to 180)
-            angle = Mathf.Clamp(angle, 0f, 180f);
+
+            //TODO: Move this logic somewhere else...
+            float angleX = Mathf.Abs(angle) >= 90 ? 180f : 0f;
+
+            float angleZ = Mathf.Abs(angleX%360f) == 180f ? (Mathf.Sign(direction.x) * angle) : angle;
+            #endregion
             //TODO: Hardcode. Replace
-            Instantiate(entity, spawnpoint.position, Quaternion.Euler(0,0,angle));
+
+            Instantiate(entity, spawnpoint.position, Quaternion.Euler(angleX, 0f, angleZ));
         }
     }
 
