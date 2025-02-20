@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
-  _direction: {x: -1, y: 0}
+  _direction: {x: 0, y: 0}
 --- !u!114 &3938766259009401615
 MonoBehaviour:
   m_ObjectHideFlags: 0

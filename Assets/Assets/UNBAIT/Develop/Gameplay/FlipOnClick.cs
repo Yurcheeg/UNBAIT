@@ -29,7 +29,7 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
             if (IsFlipped)
                 return;
 
-            if (collision.gameObject.TryGetComponent<Player>(out _) == false)
+            if (collision.gameObject.TryGetComponent<MarkerScripts.Cursor>(out _) == false)
                 return;
 
             //TODO: Rewrite for new Input system

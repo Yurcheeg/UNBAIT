@@ -20,6 +20,7 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private List<Entity> _entitiesInRange = new();
 
+        //public Type TargetType => _targetType;
 
         private void UpdateClosestTarget()
         {

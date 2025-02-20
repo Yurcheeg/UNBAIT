@@ -9,7 +9,7 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
         private static Dictionary<EntityType, Type> _targetsToType = new Dictionary<EntityType, Type>()
         {
             {EntityType.None, null },
-            {EntityType.Cursor, typeof(Player) },
+            {EntityType.Cursor, typeof(Cursor) },
             {EntityType.Hook, typeof(Hook) },
         };
 

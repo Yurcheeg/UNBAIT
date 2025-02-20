@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Assets.UNBAIT.Develop.Gameplay
+namespace Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
     public class Movable : MonoBehaviour
     {
@@ -11,6 +11,6 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
 
         public void SetDirection(Vector2 direction) => _direction = direction.normalized;
 
-        private void Awake() => _direction.Normalize();
+        private void OnEnable() => SetDirection(_direction);
     }
 }
