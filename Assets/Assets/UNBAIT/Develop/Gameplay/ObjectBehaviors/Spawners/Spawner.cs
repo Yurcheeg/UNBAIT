@@ -20,11 +20,12 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator Start()
     {
+        if (IsDisabled)
+            yield break;
+
         yield return new WaitForSecondsRealtime(3f);
         Spawn(_entityToSpawn);
 
-        if (IsDisabled)
-            yield break;
 
         yield return Start();
     }

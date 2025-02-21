@@ -11,6 +11,5 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         public void SetDirection(Vector2 direction) => _direction = direction.normalized;
 
-        private void OnEnable() => SetDirection(_direction);
     }
 }

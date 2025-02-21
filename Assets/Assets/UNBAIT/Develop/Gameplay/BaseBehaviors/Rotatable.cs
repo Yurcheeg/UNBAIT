@@ -2,7 +2,7 @@
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
-    public class Rotatable : MonoBehaviour
+    public sealed class Rotatable : MonoBehaviour
     {
         public Transform Target { get; private set; } = null;
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay
 {
+    //TODO: Add fisherman
     public static class Target
     {
         private static Dictionary<EntityType, Type> _targetsToType = new Dictionary<EntityType, Type>()

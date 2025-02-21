@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
-    public class FindTargetOnCollision : MonoBehaviour
+    public sealed class FindTargetOnCollision : MonoBehaviour
     {
         [SerializeField] private CircleCollider2D _circleCollider;
 

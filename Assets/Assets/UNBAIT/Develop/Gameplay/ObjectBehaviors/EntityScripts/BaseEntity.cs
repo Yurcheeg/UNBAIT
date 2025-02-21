@@ -1,7 +1,8 @@
 ﻿using Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
+using NUnit.Framework;
 using UnityEngine;
 
-namespace Assets.Assets.UNBAIT.Develop.Gameplay
+namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
 {
     [RequireComponent(typeof(Movable))]
     [RequireComponent(typeof(Rotatable))]
@@ -11,7 +12,7 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
 
         public Rotatable Rotatable { get; private set; }
 
-        [field: SerializeField] public bool IsMoving { get; private set; } = false;
+        [field: SerializeField] public bool IsMoving { get; set; } = false;
 
         private void Update()
         {
