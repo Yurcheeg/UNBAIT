@@ -12,6 +12,7 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
             {EntityType.None, null },
             {EntityType.Cursor, typeof(Cursor) },
             {EntityType.Hook, typeof(Hook) },
+            {EntityType.Fisherman, typeof(Fisherman) }
         };
 
         public static Type GetType(EntityType target) => _targetsToType[target];
@@ -24,5 +25,6 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
 
         Hook = 0b_0001,
         Cursor = 0b_0010,
+        Fisherman = 0b_0100
     }
 }

@@ -5,22 +5,19 @@ using UnityEngine;
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
+    [RequireComponent(typeof(CircleCollider2D))]
     public sealed class FindTargetOnCollision : MonoBehaviour
     {
-        [SerializeField] private CircleCollider2D _circleCollider;
+        public event Action<Entity> FoundEntity;
 
         [SerializeField] private EntityType _targetToFind;
 
         private Type _targetType;
         private Entity _target = null;
 
-        public event Action<Entity> FoundEntity;
-
-        private Entity _baseObject;
-
         private List<Entity> _entitiesInRange = new();
 
-        //public Type TargetType => _targetType;
+        private CircleCollider2D _circleCollider;
 
         private void UpdateClosestTarget()
         {
@@ -79,10 +76,8 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         private void Awake()
         {
             _circleCollider = GetComponent<CircleCollider2D>();
-            _baseObject = GetComponentInParent<Entity>();
 
             _targetType = Target.GetType(_targetToFind);
-
         }
 
         private void OnEnable() => _target = null;

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿#define UNITY_EDITOR
+
+using UnityEngine;
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay
 {
@@ -10,9 +12,10 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay
             float max = Mathf.Max(startNumber, endNumber);
 
             float randomNumber = Random.Range(min, max);
-
+#if UNITY_EDITOR
             Debug.Log($"Random number is: {randomNumber} ");
-            return Random.Range(min, max);
+#endif
+            return randomNumber;
         }
     }
 }

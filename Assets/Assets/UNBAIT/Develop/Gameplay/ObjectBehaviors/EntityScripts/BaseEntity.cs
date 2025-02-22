@@ -1,5 +1,6 @@
 ﻿using Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
 using NUnit.Framework;
+using System;
 using UnityEngine;
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
@@ -8,6 +9,9 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
     [RequireComponent(typeof(Rotatable))]
     public class BaseEntity : MonoBehaviour
     {
+        public Action MovementStarted;
+        public Action MovementStopped;
+
         public Movable Movable { get; private set; }
 
         public Rotatable Rotatable { get; private set; }
