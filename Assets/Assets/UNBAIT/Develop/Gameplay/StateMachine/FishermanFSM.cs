@@ -6,11 +6,11 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.StateMachine
 {
     public class FishermanFSM : MonoBehaviour
     {
-        private State _currentState;
+        private BaseState _currentState;
 
         private BaseEntity _entity;
 
-        private void ChangeState(State newState)
+        private void ChangeState(BaseState newState)
         {
             if (_currentState != null)
                 _currentState.Exit();

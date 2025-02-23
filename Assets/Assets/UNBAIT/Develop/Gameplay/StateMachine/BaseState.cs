@@ -2,14 +2,26 @@ using UnityEngine;
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay.StateMachine
 {
-    public abstract class State
+    public abstract class BaseState
     {
-        public abstract void Enter();
-        public abstract void Exit();
-        public abstract void Update();
+        public virtual void Enter()
+        {
+#if UNITY_EDITOR
+            Debug.Log($"Entering {this.GetType().Name}");
+#endif
+        }
+        public virtual void Exit()
+        {
+#if UNITY_EDITOR
+            Debug.Log($"Exiting {this.GetType().Name}");
+#endif
+        }
+        public virtual void Update()
+        {
+        }
     }
 
-    public class IdleState : State
+    public class IdleState : BaseState
     {
         private FishermanFSM fsm;
 
@@ -17,24 +29,9 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.StateMachine
         {
             this.fsm = fsm;
         }
-
-        public override void Enter()
-        {
-            Debug.Log($"Entering {this.GetType().Name}");
-        }
-
-        public override void Exit()
-        {
-            Debug.Log($"Exiting {ToString()}");
-        }
-
-        public override void Update()
-        {
-
-        }
     }
 
-    public class MovingState : State
+    public class MovingState : BaseState
     {
         private FishermanFSM fsm;
 
@@ -45,13 +42,11 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.StateMachine
 
         public override void Enter()
         {
-            Debug.Log($"Entering {ToString()}");
             fsm.StartMovement();
         }
 
         public override void Exit()
         {
-            Debug.Log($"Exiting {ToString()}");
             fsm.StopMovement();
         }
 
@@ -61,7 +56,7 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.StateMachine
         }
     }
 
-    public class FishingState : State
+    public class FishingState : BaseState
     {
         private FishermanFSM fsm;
 
@@ -77,12 +72,7 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.StateMachine
 
         public override void Exit()
         {
-            Debug.Log($"Exiting {ToString()}");
-        }
-
-        public override void Update()
-        {
-            
+            //destroy hook
         }
     }
 }
