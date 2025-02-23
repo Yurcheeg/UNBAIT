@@ -1,5 +1,4 @@
 ﻿using Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
-using NUnit.Framework;
 using System;
 using UnityEngine;
 
@@ -9,14 +8,26 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
     [RequireComponent(typeof(Rotatable))]
     public class BaseEntity : MonoBehaviour
     {
-        public Action MovementStarted;
-        public Action MovementStopped;
+        public Action<bool> MovementStarted;
+
+        private bool _isMoving = false;
+        public bool IsMoving
+        {
+            get => _isMoving;
+            set
+            {
+                if (value == _isMoving)
+                    return;
+
+                MovementStarted?.Invoke(value);
+                _isMoving = value;
+            }
+        }
 
         public Movable Movable { get; private set; }
 
         public Rotatable Rotatable { get; private set; }
 
-        [field: SerializeField] public bool IsMoving { get; set; } = false;
 
         private void Update()
         {

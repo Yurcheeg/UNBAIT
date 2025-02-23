@@ -17,8 +17,6 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private List<Entity> _entitiesInRange = new();
 
-        private CircleCollider2D _circleCollider;
-
         private void UpdateClosestTarget()
         {
             if (_entitiesInRange.Count == 0)
@@ -73,12 +71,7 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             }
         }
 
-        private void Awake()
-        {
-            _circleCollider = GetComponent<CircleCollider2D>();
-
-            _targetType = Target.GetType(_targetToFind);
-        }
+        private void Awake() => _targetType = Target.GetType(_targetToFind);
 
         private void OnEnable() => _target = null;
     }

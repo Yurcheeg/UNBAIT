@@ -2,8 +2,15 @@ using UnityEngine;
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay.StateMachine
 {
-    public abstract class BaseState
+    public abstract class BaseState<TFSM> where TFSM : MonoBehaviour
     {
+        protected TFSM FSM;
+
+        protected BaseState(TFSM fsm)
+        {
+            FSM = fsm;
+        }
+
         public virtual void Enter()
         {
 #if UNITY_EDITOR
@@ -21,53 +28,45 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.StateMachine
         }
     }
 
-    public class IdleState : BaseState
+    public class IdleState : BaseState<FishermanFSM>
     {
-        private FishermanFSM fsm;
-
-        public IdleState(FishermanFSM fsm)
-        {
-            this.fsm = fsm;
-        }
-    }
-
-    public class MovingState : BaseState
-    {
-        private FishermanFSM fsm;
-
-        public MovingState(FishermanFSM fsm)
-        {
-            this.fsm = fsm;
-        }
+        public IdleState(FishermanFSM fsm) : base(fsm) { }
 
         public override void Enter()
         {
-            fsm.StartMovement();
+            base.Enter();
+            FSM.StopMovement();
+        }
+    }
+
+    public class MovingState : BaseState<FishermanFSM>
+    {
+        public MovingState(FishermanFSM fsm) : base(fsm) { }
+
+        public override void Enter()
+        {
+            base.Enter();
+            FSM.StartMovement();
         }
 
         public override void Exit()
         {
-            fsm.StopMovement();
+            base.Exit();
+            FSM.StopMovement();
         }
 
-        public override void Update()
-        {
-
-        }
+        public override void Update() { }
     }
 
-    public class FishingState : BaseState
+    public class FishingState : BaseState<FishermanFSM>
     {
-        private FishermanFSM fsm;
-
-        public FishingState(FishermanFSM fsm)
-        {
-            this.fsm = fsm;
-        }
+        //TODO: Update after deciding on hook mechanics
+        public FishingState(FishermanFSM fsm) :base(fsm) { }
 
         public override void Enter()
         {
-            fsm.ThrowHook();
+            base.Enter();
+            FSM.ThrowHook();
         }
 
         public override void Exit()

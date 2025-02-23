@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
             Instantiate(entity, spawnpoint.position, Quaternion.identity);
     }
 
+    //TODO: Replace test implementation of spawning logic
     private IEnumerator Start()
     {
         if (IsDisabled)

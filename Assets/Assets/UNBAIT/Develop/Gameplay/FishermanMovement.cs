@@ -7,6 +7,9 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
     [RequireComponent(typeof(BaseEntity))]
     public class FishermanMovement : MonoBehaviour
     {
+        public Action PositionSet;
+        public Action PositionReached;
+
         [SerializeField] private Transform _startPoint;
         [SerializeField] private Transform _endPoint;
 
@@ -15,12 +18,18 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
         private BaseEntity _entity;
         private Movable Movable => _entity.Movable;
 
+        private bool _hasReachedPosition = false;
+
         private void Update()
         {
+            if (_hasReachedPosition)
+                return; 
+
             if(Mathf.Abs(transform.position.x - _positionX) <= 0.05f)
             {
                 //TODO: Fix
-                _entity.IsMoving = false;
+                _hasReachedPosition = true;
+                PositionReached?.Invoke();
             }
         }
 
@@ -29,6 +38,8 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
             Movable.SetDirection(new Vector2(Vector2.zero.x - transform.position.x,0));
 
             _positionX = RandomNumber.GetInRange(_startPoint.position.x, _endPoint.position.x);
+
+            PositionSet?.Invoke();
         }
 
         //TODO: add new class for hook bhvr

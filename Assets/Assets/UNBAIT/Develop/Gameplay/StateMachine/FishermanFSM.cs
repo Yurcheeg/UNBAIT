@@ -6,14 +6,15 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.StateMachine
 {
     public class FishermanFSM : MonoBehaviour
     {
-        private BaseState _currentState;
+        private BaseState<FishermanFSM> _currentState;
 
         private BaseEntity _entity;
 
-        private void ChangeState(BaseState newState)
+        private FishermanMovement _fishermanMovement;
+
+        private void ChangeState(BaseState<FishermanFSM> newState)
         {
-            if (_currentState != null)
-                _currentState.Exit();
+            _currentState?.Exit();
 
             _currentState = newState;
             _currentState.Enter();
@@ -23,19 +24,40 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.StateMachine
 
         public void StopMovement() => _entity.IsMoving = false;
 
+        private void OnPositionSet() => ChangeState(new MovingState(this));
+
         public void ThrowHook()
         {
             throw new NotImplementedException();
         }
 
-        private void Update()
+        private void Update() => _currentState?.Update();
+
+        private void Start()
         {
-            if (_currentState != null)
-                _currentState.Update();
+            if(_currentState == null)
+                ChangeState(new IdleState(this));
         }
 
-        private void Start() => ChangeState(new IdleState(this));
+        private void Awake()
+        {
+            _entity = GetComponent<BaseEntity>();
+            _fishermanMovement = GetComponent<FishermanMovement>();
 
-        private void Awake() => _entity = GetComponent<BaseEntity>();
+            _fishermanMovement.PositionSet += OnPositionSet;
+            _fishermanMovement.PositionReached += OnPositionReached;
+            //_entity.MovementStarted += OnMovementChange;
+        }
+
+        private void OnPositionReached() => ChangeState(new FishingState(this));
+
+
+        //private void OnMovementChange(bool isMoving)
+        //{
+        //    //if(isMoving)
+        //    //{
+        //    //    ChangeState(new MovingState(this)); // movement change is basically called by MovingState
+        //    //}
+        //}
     }
 }
