@@ -1,12 +1,11 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
-using System;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
 {
     public sealed class Hook : Entity//TODO: put all the logic into desegnated class
     {
-        private Entity _currentEntity = null;
+        private Entity _hookedEntity = null;
 
         [field: SerializeField] public bool InUse { get; private set; } = false;
 
@@ -21,7 +20,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
             if (hookable.IsHooked)
                 return false;
 
-            _currentEntity = entity;
+            _hookedEntity = entity;
             InUse = true;
             hookable.IsHooked = true;
 
@@ -32,9 +31,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
             if (entity is not IHookable hookable)
                 return false;
 
-            if (entity == _currentEntity)
+            if (entity == _hookedEntity)
             {
-                _currentEntity = null;
+                _hookedEntity = null;
                 InUse = false;
                 hookable.IsHooked = false;
                 return true;
@@ -47,8 +46,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
             if (InUse)
                 GoUp();
 
-            if (_currentEntity != null)
-                _currentEntity.transform.position = transform.position;
+            if (_hookedEntity != null)
+                _hookedEntity.transform.position = transform.position;
         }
 
         private void GoUp()

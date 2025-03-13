@@ -11,10 +11,17 @@ namespace Assets.UNBAIT.Develop.Gameplay
             {EntityType.None, null },
             {EntityType.Cursor, typeof(Cursor) },
             {EntityType.Hook, typeof(Hook) },
-            {EntityType.Fisherman, typeof(Fisherman) }
+            {EntityType.Fisherman, typeof(Fisherman) },
+            {EntityType.Fish, typeof(Fish) }
         };
 
-        public static Type GetType(EntityType target) => _targetsToType[target];
+        public static Type GetType(EntityType target)
+        {
+            if (_targetsToType[target] is null) //Special treatment because type cannot be null
+                throw new ArgumentException($"{nameof(target)} cannot be set to {nameof(EntityType.None)}");
+
+            return _targetsToType[target];
+        }
     }
 
     [Flags]
@@ -24,6 +31,7 @@ namespace Assets.UNBAIT.Develop.Gameplay
 
         Hook = 0b_0001,
         Cursor = 0b_0010,
-        Fisherman = 0b_0100
+        Fisherman = 0b_0100,
+        Fish = 0b_1000
     }
 }

@@ -2,7 +2,6 @@
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
-using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 {

@@ -22,12 +22,10 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private Quaternion GetRotation(Vector2 targetPosition, bool calculateDirection)//TODO: bool seems out of place
         {
-            Vector2 direction;
-            if (calculateDirection)
-                direction = (targetPosition - (Vector2)transform.position).normalized;
-            else
-                direction = targetPosition;
-
+            Vector2 direction = calculateDirection 
+                ? (targetPosition - (Vector2)transform.position).normalized 
+                : targetPosition;
+            
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             bool shouldFlip = direction.x < 0f;

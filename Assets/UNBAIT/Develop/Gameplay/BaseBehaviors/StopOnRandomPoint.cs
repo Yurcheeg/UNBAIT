@@ -1,10 +1,7 @@
-﻿using Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
+﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using System;
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
@@ -14,8 +11,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         public event Action PositionSet;
         public event Action PositionReached;
 
-        [SerializeField] private float _startP;
-        [SerializeField] private float _endP;
+        private const float offset = 1f;
+        [SerializeField] private float _startPositionValue;
+        [SerializeField] private float _endPositionValue;
 
         [Space]
 
@@ -25,15 +23,15 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private float _targetPosition;
 
-        private Vector3 _startPos;
+        private Vector3 _startPosition;
 
-        private Hook _hook;
 
-        public bool HasReachedPosition { get; private set; } = false;
+        private IConditionMeetable _conditionMeetable;
+
+        public bool HasReachedPosition { get; private set; }
+        public bool IsMoveBackConditionMet { get; private set; }
 
         //TODO pls replace the region
-        #region "IT DOESN'T EVEN WORK"
-
         private IEnumerator MoveToTarget()
         {
             yield return new WaitUntil(() => HasReachedTargetPosition(_targetPosition));
@@ -41,40 +39,43 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             HasReachedPosition = true;
             PositionReached?.Invoke();
 
-            yield return new WaitUntil(() => _hook != null && _hook.InUse);
+            if (_conditionMeetable == null)
+                yield break;
+
+            yield return new WaitUntil(() => IsMoveBackConditionMet);
 
             StartCoroutine(MoveBack());
         }
 
         private IEnumerator MoveBack()//todo replace
         {
-            var entity = GetComponent<BaseEntity>();
-            entity.Movable.SetDirection(_startPos - transform.position);
+            BaseEntity entity = GetComponent<BaseEntity>();
+            entity.Movable.SetDirection(_startPosition - transform.position);
             entity.IsMoving = true;
 
-            float startValue = _movementConstrains.GetLargestAxis(_startPos);
+            float startValue = _movementConstrains.GetLargestAxis(_startPosition);
             yield return new WaitUntil(() => HasReachedTargetPosition(startValue));
             entity.IsMoving = false;
         }
-
         private bool HasReachedTargetPosition(float targetPosition)
         {
             _position = _movementConstrains.GetLargestAxis(transform.position);
-            return Mathf.Abs(_position - targetPosition) < 1f;
+            return Mathf.Abs(_position - targetPosition) < offset;
         }
+        private void OnConditionMet() => IsMoveBackConditionMet = true;
 
-        #endregion
-
-        private void Awake() => _hook = GetComponent<Hook>();
+        private void Awake() => _conditionMeetable = GetComponent<MeetConditionOnCollisionWithTarget>();
 
         private void Start()
         {
-            _startPos = transform.position;
+            _startPosition = transform.position;
 
-            _targetPosition = RandomNumber.GetInRange(_startP, _endP);
+            _targetPosition = RandomNumber.GetInRange(_startPositionValue, _endPositionValue);
 
+            _conditionMeetable.ConditionMet += OnConditionMet;
             PositionSet?.Invoke();
             StartCoroutine(MoveToTarget());
         }
+
     }
 }
