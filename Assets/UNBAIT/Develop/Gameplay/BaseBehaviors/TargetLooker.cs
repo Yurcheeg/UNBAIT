@@ -83,7 +83,11 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             }
         }
 
-        private void OnDestroy() => _findTargetOnCollision.TargetFound -= OnTargetFound;
+        private void OnDestroy()
+        {
+            _findTargetOnCollision.TargetFound -= OnTargetFound;
+            Destroy(gameObject);
+        }
 
         private void Start() => _borderPosition = GetFurthermostPoint();
 

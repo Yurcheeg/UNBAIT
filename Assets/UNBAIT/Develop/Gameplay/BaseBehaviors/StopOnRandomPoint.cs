@@ -16,6 +16,10 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         [SerializeField] private float _endPositionValue;
 
         [Space]
+        
+        [SerializeField] private float _moveBackDelaySeconds = 0.5f;
+        
+        [Space]
 
         [SerializeField] private MovementConstrains _movementConstrains;
 
@@ -44,6 +48,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
             yield return new WaitUntil(() => IsMoveBackConditionMet);
 
+            yield return new WaitForSecondsRealtime(_moveBackDelaySeconds);
             StartCoroutine(MoveBack());
         }
 
@@ -51,28 +56,37 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         {
             BaseEntity entity = GetComponent<BaseEntity>();
             entity.Movable.SetDirection(_startPosition - transform.position);
-            entity.IsMoving = true;
 
             float startValue = _movementConstrains.GetLargestAxis(_startPosition);
+
+            PositionSet?.Invoke();
+
             yield return new WaitUntil(() => HasReachedTargetPosition(startValue));
-            entity.IsMoving = false;
         }
         private bool HasReachedTargetPosition(float targetPosition)
         {
             _position = _movementConstrains.GetLargestAxis(transform.position);
             return Mathf.Abs(_position - targetPosition) < offset;
         }
-        private void OnConditionMet() => IsMoveBackConditionMet = true;
+
+        private void OnConditionMet()
+        {
+            IsMoveBackConditionMet = true;
+            _conditionMeetable.ConditionMet -= OnConditionMet;
+        }
 
         private void Awake() => _conditionMeetable = GetComponent<MeetConditionOnCollisionWithTarget>();
 
+        private void OnDestroy() => _conditionMeetable.ConditionMet -= OnConditionMet;
+
         private void Start()
         {
+            _conditionMeetable.ConditionMet += OnConditionMet;
+
             _startPosition = transform.position;
 
             _targetPosition = RandomNumber.GetInRange(_startPositionValue, _endPositionValue);
 
-            _conditionMeetable.ConditionMet += OnConditionMet;
             PositionSet?.Invoke();
             StartCoroutine(MoveToTarget());
         }

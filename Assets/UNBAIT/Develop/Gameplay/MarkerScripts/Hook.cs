@@ -50,6 +50,15 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
                 _hookedEntity.transform.position = transform.position;
         }
 
+        private void OnDestroy()
+        {
+            if (_hookedEntity == null)
+                return;
+
+            Destroy(_hookedEntity.gameObject);
+            Destroy(gameObject);
+        }
+
         private void GoUp()
         {//TODO fix
             //fix what?

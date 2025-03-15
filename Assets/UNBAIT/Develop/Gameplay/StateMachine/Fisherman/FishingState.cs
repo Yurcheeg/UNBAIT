@@ -1,4 +1,5 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
+using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 {
@@ -16,6 +17,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         public override void Exit()
         {
             base.Exit();
+            UnityEngine.Object.Destroy(FSM.Hook);
+            Debug.Log($"{FSM.Hook} is set inactive");
+            //FSM.Hook.gameObject.SetActive(false);
             //destroy hook
         }
     }

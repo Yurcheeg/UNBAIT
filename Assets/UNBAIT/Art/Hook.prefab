@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPositionValue: 0
   _endPositionValue: 0
+  _moveBackDelaySeconds: 0
   _movementConstrains:
     <MoveX>k__BackingField: 0
     <MoveY>k__BackingField: 1
