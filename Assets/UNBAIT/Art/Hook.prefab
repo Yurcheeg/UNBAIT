@@ -178,8 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6527565672faac5448b0d0c0bc523359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPositionValue: 0
-  _endPositionValue: 0
+  _startPositionValue: 1
+  _endPositionValue: -2
   _moveBackDelaySeconds: 0
   _movementConstrains:
     <MoveX>k__BackingField: 0

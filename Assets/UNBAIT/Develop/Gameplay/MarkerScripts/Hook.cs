@@ -52,10 +52,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
 
         private void OnDestroy()
         {
-            if (_hookedEntity == null)
-                return;
-
-            Destroy(_hookedEntity.gameObject);
+            if (_hookedEntity != null)
+                Destroy(_hookedEntity.gameObject);
+            
             Destroy(gameObject);
         }
 
