@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Assets.UNBAIT.Develop.Gameplay
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
     public interface IDestinationSetter
     {

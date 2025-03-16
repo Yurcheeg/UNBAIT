@@ -1,8 +1,7 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
-using System;
+﻿using System;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
     public sealed class Flip : MonoBehaviour
     {

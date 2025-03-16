@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Cursor = Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Cursor;
 
-namespace Assets.UNBAIT.Develop.Gameplay
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
     [RequireComponent(typeof(Flip))]
     public sealed class FlipOnClick : MonoBehaviour
@@ -16,7 +16,6 @@ namespace Assets.UNBAIT.Develop.Gameplay
         private bool _canFlip;
 
         private void Flip() => _flip.FlipObject();
-        //private void Flip() => gameObject.SetActive(false);
 
         private bool IsConditionMet() => _currentHitCount > _hitCountToFlip || _canFlip;
 
@@ -28,7 +27,6 @@ namespace Assets.UNBAIT.Develop.Gameplay
             if (Input.GetMouseButtonDown(0))
             {
                 _currentHitCount++;
-                print("fish slapped");
                 Hit?.Invoke();
             }
 
