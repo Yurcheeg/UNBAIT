@@ -8,7 +8,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 {
     public class FishermanFSM : BaseFSM<FishermanFSM>
     {
-        private BaseEntity _entity;
+        private MovingEntity _entity;
 
         private StopOnRandomPoint _stopOnRandomPoint;
 
@@ -31,7 +31,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         private void Awake()
         {
             //TODO: decouple 
-            _entity = GetComponent<BaseEntity>();
+            _entity = GetComponent<MovingEntity>();
             _stopOnRandomPoint = GetComponent<StopOnRandomPoint>();
             _hookSpawner = GetComponent<HookSpawner>();
             
@@ -41,10 +41,13 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             _stopOnRandomPoint.PositionSet += OnPositionSet;
             _stopOnRandomPoint.PositionReached += OnPositionReached;
         }
+
         private void OnDestroy()
         {
             _stopOnRandomPoint.PositionSet -= OnPositionSet;
             _stopOnRandomPoint.PositionReached -= OnPositionReached;
+
+            Destroy(gameObject);
         }
     }
 }

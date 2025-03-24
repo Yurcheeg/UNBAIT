@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 1390394245472758664}
   - component: {fileID: 7286281410214602080}
   - component: {fileID: 7997119192048701050}
-  - component: {fileID: 6921426452114185836}
   - component: {fileID: 5678737423679480335}
   - component: {fileID: 5945320632146912831}
   - component: {fileID: 5516602117870739607}
   - component: {fileID: 971611688414068576}
   - component: {fileID: -8678243031250324516}
+  - component: {fileID: 2929396089056605502}
   m_Layer: 0
   m_Name: Fisherman
   m_TagString: Untagged
@@ -190,19 +190,6 @@ MonoBehaviour:
   _spawnPoint: {fileID: 0}
   _hookPrefab: {fileID: 3770785432691889869, guid: a6353924e281a864f8815e12227905af, type: 3}
   _spawnDelay: 5
---- !u!114 &6921426452114185836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2406229563526606959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54954e3f8b12db142aa1c29d8daf5298, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collisionTarget: 8
 --- !u!114 &5678737423679480335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,5 +248,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41176c298914277478532dc9d927fd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2929396089056605502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406229563526606959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294135ac12aa65a48a0c3330eedca867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -40,7 +40,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
                     continue;
 
                 //TODO: replace after replacing the method
-                if (GetComponentInParent<BaseEntity>().IsNotLookingAt(entity.gameObject))
+                if (GetComponentInParent<MovingEntity>().IsNotLookingAt(entity.gameObject))
                     continue;
 
                 float distance = Vector2.Distance(transform.position, entity.transform.position);

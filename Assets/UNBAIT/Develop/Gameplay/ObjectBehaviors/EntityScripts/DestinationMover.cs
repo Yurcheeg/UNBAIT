@@ -7,7 +7,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
     public class DestinationMover : MonoBehaviour
     {
         private StopOnRandomPoint _randomAxisMover;
-        private BaseEntity _baseEntity;
+        private MovingEntity _baseEntity;
 
         private void OnPositionSet() => _baseEntity.IsMoving = true;
 
@@ -25,7 +25,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
         private void Awake()
         {
             _randomAxisMover = GetComponent<StopOnRandomPoint>();
-            _baseEntity = GetComponent<BaseEntity>();
+            _baseEntity = GetComponent<MovingEntity>();
 
             _randomAxisMover.PositionSet += OnPositionSet;
         }

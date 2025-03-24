@@ -17,7 +17,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         [SerializeField] private List<Transform> _borders;
 
         private Vector2 _borderPosition;
-        private BaseEntity _entity;
+        private MovingEntity _entity;
 
         [SerializeField] private Entity _target;
 
@@ -94,9 +94,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         private void Awake()
         {
             DestroyColidedObjects[] borders = FindObjectsByType<DestroyColidedObjects>(FindObjectsSortMode.None);//TODO : bad. replace asap
-            _borders.AddRange(borders.Select(border => border.transform));//
+            _borders.AddRange(borders.Select(border => border.transform));
 
-            _entity = GetComponent<BaseEntity>();
+            _entity = GetComponent<MovingEntity>();
 
             _findTargetOnCollision.TargetFound += OnTargetFound;
         }

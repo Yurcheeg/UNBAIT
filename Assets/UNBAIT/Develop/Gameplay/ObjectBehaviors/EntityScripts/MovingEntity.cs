@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
 {
     [RequireComponent(typeof(Movable))]
-    public class BaseEntity : MonoBehaviour
+    public class MovingEntity : MonoBehaviour
     {
         public bool IsMoving { get; set; }
 

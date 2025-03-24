@@ -6,7 +6,7 @@ namespace Assets.UNBAIT.Develop.Gameplay
 {
     public static class Target
     {
-        private static Dictionary<EntityType, Type> _targetsToType = new Dictionary<EntityType, Type>()
+        private static readonly Dictionary<EntityType, Type> _targetsToType = new Dictionary<EntityType, Type>()
         {
             {EntityType.None, null },
             {EntityType.Cursor, typeof(Cursor) },

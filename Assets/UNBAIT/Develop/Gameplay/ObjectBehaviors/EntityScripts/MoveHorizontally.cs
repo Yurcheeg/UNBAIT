@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
 {
-    [RequireComponent(typeof(BaseEntity))]
+    [RequireComponent(typeof(MovingEntity))]
     public class MoveHorizontally : MonoBehaviour
     {
-        private BaseEntity _entity;
+        private MovingEntity _entity;
 
         private Movable Movable => _entity.Movable;
 
@@ -19,6 +19,6 @@ namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
             Movable.SetDirection(direction);
         }
 
-        private void Awake() => _entity = GetComponent<BaseEntity>();
+        private void Awake() => _entity = GetComponent<MovingEntity>();
     }
 }

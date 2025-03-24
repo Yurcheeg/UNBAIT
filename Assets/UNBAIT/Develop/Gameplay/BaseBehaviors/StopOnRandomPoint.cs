@@ -1,4 +1,5 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition.Abstract;
+using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -27,17 +28,15 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         private float _targetPosition;
 
         private Vector3 _startPosition;
-
-
-        private IConditionMeetable _conditionMeetable;
+        private MoveBackCondition _conditionMeetable;
 
         public bool HasReachedPosition { get; private set; }
         public bool IsMoveBackConditionMet { get; private set; }
 
-        //TODO pls replace the region
+        //TODO: replace the region
         private IEnumerator MoveToTarget()
         {
-            yield return new WaitUntil(() => HasReachedTargetPosition(_targetPosition));
+            yield return new WaitUntil(() => HasReachedTargetPosition(_targetPosition) || IsMoveBackConditionMet);
 
             HasReachedPosition = true;
             PositionReached?.Invoke();
@@ -51,9 +50,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             StartCoroutine(MoveBack());
         }
 
-        private IEnumerator MoveBack()//todo replace
+        private IEnumerator MoveBack()//TODO: replace
         {
-            BaseEntity entity = GetComponent<BaseEntity>();
+            MovingEntity entity = GetComponent<MovingEntity>();
             entity.Movable.SetDirection(_startPosition - transform.position);
 
             float startValue = _movementConstrains.GetLargestAxis(_startPosition);
@@ -74,7 +73,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             _conditionMeetable.ConditionMet -= OnConditionMet;
         }
 
-        private void Awake() => _conditionMeetable = GetComponent<MeetConditionOnCollisionWithTarget>();
+        private void Awake() => _conditionMeetable = GetComponent<MoveBackCondition>();
 
         private void OnDestroy() => _conditionMeetable.ConditionMet -= OnConditionMet;
 

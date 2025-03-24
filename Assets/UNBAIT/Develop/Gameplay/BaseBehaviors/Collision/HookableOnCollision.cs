@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
-    public class HookOnCollision : MonoBehaviour
+    public class HookableOnCollision : MonoBehaviour
     {
         public event Action<Hook> Hooked;
         public event Action Unhooked;

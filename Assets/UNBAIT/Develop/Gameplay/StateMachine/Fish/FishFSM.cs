@@ -11,9 +11,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish
     {
         private TargetLooker _targetLooker;
 
-        private HookOnCollision _hookOnCollision;
+        private HookableOnCollision _hookOnCollision;
 
-        private BaseEntity _entity;
+        private MovingEntity _entity;
 
         public override void StartMovement() => _entity.IsMoving = true;
 
@@ -38,9 +38,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish
 
         private void Awake()
         {
-            _entity = GetComponent<BaseEntity>();
+            _entity = GetComponent<MovingEntity>();
             _targetLooker = GetComponent<TargetLooker>();
-            _hookOnCollision = GetComponent<HookOnCollision>();
+            _hookOnCollision = GetComponent<HookableOnCollision>();
 
             if (CurrentState == null)
                 ChangeState(new IdleState<FishFSM>(this));

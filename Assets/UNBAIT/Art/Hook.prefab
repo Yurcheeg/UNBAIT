@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 487814106414283757}
   - component: {fileID: 6241502094392802898}
   - component: {fileID: -4284075154319670671}
-  - component: {fileID: -2599362421676452970}
+  - component: {fileID: 5202117214572759670}
   m_Layer: 0
   m_Name: Hook
   m_TagString: Untagged
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bbd9aa85a1683941bbea810076faf02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-2599362421676452970
+--- !u!114 &5202117214572759670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,7 +231,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6145565103105055871}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54954e3f8b12db142aa1c29d8daf5298, type: 3}
+  m_Script: {fileID: 11500000, guid: 4757a99d5443ad848b5c5242d46854c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collisionTarget: 8
