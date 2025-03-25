@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
@@ -10,7 +9,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         public Quaternion RotateTowards(Transform target)
         {
             Vector2 targetPosition = target ? target.position : Vector2.zero;
-            return GetRotation(targetPosition, calculateDirection: true);
+            return GetRotation(targetPosition);
         }
 
         public Quaternion RotateTowards(Vector2 targetPosition) => GetRotation(targetPosition, calculateDirection: false);
@@ -20,7 +19,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         public void SetTarget(Transform target) => Target = target;
 
-        private Quaternion GetRotation(Vector2 targetPosition, bool calculateDirection)//TODO: bool seems out of place
+        private Quaternion GetRotation(Vector2 targetPosition, bool calculateDirection = true)
         {
             Vector2 direction = calculateDirection 
                 ? (targetPosition - (Vector2)transform.position).normalized 

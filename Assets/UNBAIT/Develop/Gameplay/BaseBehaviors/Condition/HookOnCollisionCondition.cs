@@ -18,10 +18,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
             if (collision.gameObject.TryGetComponent(out Entity entity) == false)
                 return;
 
-            if (entity is not IHookable)
-                return;
-
-            MeetCondition();
+            if (entity is IHookable)
+                MeetCondition();
         }
 
         private void Awake()

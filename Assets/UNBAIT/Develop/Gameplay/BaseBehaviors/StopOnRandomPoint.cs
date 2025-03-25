@@ -16,9 +16,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         [SerializeField] private float _endPositionValue;
 
         [Space]
-        
+
         [SerializeField] private float _moveBackDelaySeconds = 0.5f;
-        
+
         [Space]
 
         [SerializeField] private MovementConstrains _movementConstrains;
@@ -33,7 +33,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         public bool HasReachedPosition { get; private set; }
         public bool IsMoveBackConditionMet { get; private set; }
 
-        //TODO: replace the region
+        //TODO: replace
         private IEnumerator MoveToTarget()
         {
             yield return new WaitUntil(() => HasReachedTargetPosition(_targetPosition) || IsMoveBackConditionMet);
@@ -42,7 +42,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             PositionReached?.Invoke();
 
             if (_conditionMeetable == null)
-                yield break;
+                throw new ArgumentNullException($"Condition is null, {nameof(MoveBack)} will not trigger");
 
             yield return new WaitUntil(() => IsMoveBackConditionMet);
 
