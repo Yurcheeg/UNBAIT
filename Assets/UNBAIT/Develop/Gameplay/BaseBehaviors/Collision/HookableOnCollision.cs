@@ -8,7 +8,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
     public class HookableOnCollision : MonoBehaviour
     {
         public event Action<Hook> Hooked;
-        public event Action Unhooked;
 
         private Entity _entity;
 
@@ -19,15 +18,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
             if (hook.TryHookEntity(_entity))
                 Hooked?.Invoke(hook);
-        }
-
-        private void OnCollisionExit2D(Collision2D collision)
-        {
-            if (collision.gameObject.TryGetComponent<Hook>(out Hook hook) == false)
-                return;
-
-            if (hook.TryUnhookEntity(_entity))
-                Unhooked?.Invoke();
         }
 
         private void Awake() => _entity = GetComponent<Entity>();

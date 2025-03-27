@@ -86,6 +86,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             _targetPosition = RandomNumber.GetInRange(_startPositionValue, _endPositionValue);
 
             PositionSet?.Invoke();
+
             StartCoroutine(MoveToTarget());
         }
 

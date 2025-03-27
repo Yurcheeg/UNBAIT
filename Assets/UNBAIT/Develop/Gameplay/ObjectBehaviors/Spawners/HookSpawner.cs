@@ -9,20 +9,26 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
     {
         [SerializeField] private Hook _hookPrefab;
 
-        [SerializeField] private float _spawnDelay = 5f;
+        [SerializeField] private float _spawnDelay;
 
         public override Hook Spawn(Hook prefab)
         {
-            StartCoroutine(SpawnDelay());
             Hook hook = base.Spawn(prefab);
+            hook.gameObject.SetActive(false);
+            StartCoroutine(ActivateAfterDelay(hook));
             return hook;
         }
 
         public Hook ThrowHook() => Spawn(_hookPrefab);
 
-        private IEnumerator SpawnDelay()
+        private IEnumerator ActivateAfterDelay(Hook hook)
         {
             yield return new WaitForSecondsRealtime(_spawnDelay);
+
+            if (hook == null)
+                yield break;
+            
+            hook.gameObject.SetActive(true);
         }
     }
 }

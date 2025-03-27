@@ -29,21 +29,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
 
             return true;
         }
-        public bool TryUnhookEntity(Entity entity)
-        {
-            if (entity is not IHookable hookable)
-                return false;
 
-            if (entity == _hookedEntity)
-            {
-                _hookedEntity = null;
-                InUse = false;
-                hookable.IsHooked = false;
-                return true;
-            }
-
-            return false;
-        }
         private void Update()
         {
             if (InUse)

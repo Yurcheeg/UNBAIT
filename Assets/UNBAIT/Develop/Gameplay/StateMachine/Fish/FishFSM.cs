@@ -27,13 +27,10 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish
 
         private void OnHooked(Hook hook) => ChangeState(new HookedState(this));
 
-        private void OnUnhooked() => ChangeState(new IdleState<FishFSM>(this));
-
         private void OnDisable()
         {
             _targetLooker.PositionSet -= OnPositionSet;
             _hookOnCollision.Hooked -= OnHooked;
-            _hookOnCollision.Unhooked -= OnUnhooked;
         }
 
         private void Awake()
@@ -47,7 +44,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish
 
             _targetLooker.PositionSet += OnPositionSet;
             _hookOnCollision.Hooked += OnHooked;
-            _hookOnCollision.Unhooked += OnUnhooked;
         }
 
     }

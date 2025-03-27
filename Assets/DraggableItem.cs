@@ -28,10 +28,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         UpdateSprite();
     }
 
-    private void UpdateSprite()
-    {
-        _image.sprite = CurrentItem != null ? CurrentItem.Sprite : null;
-    }
+    private void UpdateSprite() => _image.sprite = CurrentItem != null ? CurrentItem.Sprite : null;
 
     public void OnBeginDrag(PointerEventData eventData)
     {

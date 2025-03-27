@@ -34,7 +34,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             _entity = GetComponent<MovingEntity>();
             _stopOnRandomPoint = GetComponent<StopOnRandomPoint>();
             _hookSpawner = GetComponent<HookSpawner>();
-            
+
             if (CurrentState == null)
                 ChangeState(new IdleState<FishermanFSM>(this));
 
