@@ -12,7 +12,7 @@ namespace Assets.UNBAIT.Develop.Gameplay
 
         [SerializeField] private List<Item> _items = new(MaxSize);
 
-        [SerializeField] private List<Image> _itemIcons = new(MaxSize);
+        [SerializeField] private List<DraggableItem> _itemSlot = new(MaxSize);
 
         public bool IsFull => _items.Count == MaxSize;
 
@@ -24,19 +24,25 @@ namespace Assets.UNBAIT.Develop.Gameplay
                 return false;
 
             int index = GetEmptySpace();
-            _items.Add(item);
 
-            if(index < _itemIcons.Count)
+            if (index < _itemSlot.Count)
             {
-                //item.transform.position = _itemIcons[index].transform.position;
-                _itemIcons[index].sprite = item.Sprite;
+                item.transform.position = _itemSlot[index].transform.position;
+                _itemSlot[index].SetItem(item);
 
+                _items.Add(item);
             }
 
             return true;
         }
 
-        public void RemoveItem(Item item) => _items.Remove(item);
+        public void RemoveItem(Item item)
+        {
+            int index = _items.IndexOf(item);
+
+            _items.RemoveAt(index);
+            _itemSlot[index].SetItem(null);
+        }
 
         private int GetEmptySpace()
         {

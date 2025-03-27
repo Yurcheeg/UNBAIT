@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
+using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
 {
+    [RequireComponent(typeof(Entity))]
     public sealed class Item : MonoBehaviour
     {
-        public Sprite Sprite { get; private set; }
+        private Entity _entity;
 
-        public bool IsPicked { get; private set; }
+        public bool IsHooked => _entity is IHookable hookable && hookable.IsHooked;
+        public Sprite Sprite { get; private set; }
 
         private void Update()
         {
@@ -15,17 +18,17 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
                 if (Cursor.IsMouseOverTarget(gameObject) == false)
                     return;
 
-                if (IsPicked)
+                if (IsHooked)
                     return;
-                
-                if (Inventory.Instance.TryAddItem(this))
-                {
-                    IsPicked = true;
-                    //Destroy(gameObject);
-                }
+
+                Inventory.Instance.TryAddItem(this);
             }
         }
 
-        private void Awake() => Sprite = GetComponent<SpriteRenderer>().sprite;
+        private void Awake()
+        {
+            _entity = GetComponent<Entity>();
+            Sprite = GetComponent<SpriteRenderer>().sprite;
+        }
     }
 }
