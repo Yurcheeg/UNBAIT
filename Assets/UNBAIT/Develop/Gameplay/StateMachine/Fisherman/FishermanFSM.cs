@@ -13,8 +13,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         private StopOnRandomPoint _stopOnRandomPoint;
 
         private HookSpawner _hookSpawner;
+        private MarkerScripts.Fisherman _fisherman;
 
-        public Hook Hook { get; private set; }
+        public Hook Hook => _fisherman.Hook;
 
         public override void StartMovement() => _entity.IsMoving = true;
 
@@ -24,7 +25,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 
         private void OnPositionReached() => ChangeState(new FishingState(this));
 
-        public void ThrowHook() => Hook = _hookSpawner.ThrowHook();
+        public void ThrowHook() => _fisherman.Hook = _hookSpawner.ThrowHook();
 
         private void Update() => CurrentState?.Update();
 
@@ -34,6 +35,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             _entity = GetComponent<MovingEntity>();
             _stopOnRandomPoint = GetComponent<StopOnRandomPoint>();
             _hookSpawner = GetComponent<HookSpawner>();
+            _fisherman = GetComponent<MarkerScripts.Fisherman>();
 
             if (CurrentState == null)
                 ChangeState(new IdleState<FishermanFSM>(this));

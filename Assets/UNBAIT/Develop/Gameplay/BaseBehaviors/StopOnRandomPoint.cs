@@ -2,6 +2,8 @@
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
@@ -28,7 +30,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         private float _targetPosition;
 
         private Vector3 _startPosition;
-        private MoveBackCondition _conditionMeetable;
+
+        private List<MoveBackCondition> _conditions = new();
 
         public bool HasReachedPosition { get; private set; }
         public bool IsMoveBackConditionMet { get; private set; }
@@ -41,7 +44,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             HasReachedPosition = true;
             PositionReached?.Invoke();
 
-            if (_conditionMeetable == null)
+            if (_conditions == null)
                 throw new ArgumentNullException($"Condition is null, {nameof(MoveBack)} will not trigger");
 
             yield return new WaitUntil(() => IsMoveBackConditionMet);
@@ -69,17 +72,31 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private void OnConditionMet()
         {
+            if (IsMoveBackConditionMet)
+                return;
             IsMoveBackConditionMet = true;
-            _conditionMeetable.ConditionMet -= OnConditionMet;
+
+            foreach (var condition in _conditions)
+            {
+                condition.ConditionMet -= OnConditionMet;
+            }
         }
 
-        private void Awake() => _conditionMeetable = GetComponent<MoveBackCondition>();
+        private void Awake() => _conditions = GetComponents<MoveBackCondition>().ToList();
 
-        private void OnDestroy() => _conditionMeetable.ConditionMet -= OnConditionMet;
-
+        private void OnDestroy()
+        {
+            foreach (var condition in _conditions)
+            {
+                condition.ConditionMet -= OnConditionMet;
+            }
+        }
         private void Start()
         {
-            _conditionMeetable.ConditionMet += OnConditionMet;
+            foreach (MoveBackCondition condition in _conditions)
+            {
+                condition.ConditionMet += OnConditionMet;
+            }
 
             _startPosition = transform.position;
 

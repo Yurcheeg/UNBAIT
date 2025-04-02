@@ -9,6 +9,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
         private Entity _entity;
 
         public bool IsHooked => _entity is IHookable hookable && hookable.IsHooked;
+
         public Sprite Sprite { get; private set; }
 
         private void Update()

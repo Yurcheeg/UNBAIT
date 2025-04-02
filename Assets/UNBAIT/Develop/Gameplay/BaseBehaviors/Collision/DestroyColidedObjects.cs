@@ -7,7 +7,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Entity entity) == false)
+            if (collision.gameObject.TryGetComponent(out Entity _) == false)
                 return;
 
             Destroy(collision.gameObject);

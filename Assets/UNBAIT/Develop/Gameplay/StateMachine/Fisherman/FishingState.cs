@@ -16,16 +16,15 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         public override void Exit()
         {
             base.Exit();
-            Object.Destroy(FSM.Hook);
+            if(FSM.Hook != null)
+                Object.Destroy(FSM.Hook);
         }
 
         public override void Update()
         {
             base.Update();
             if(FSM.Hook == null)
-            {
                 FSM.ThrowHook();
-            }
         }
     }
 }

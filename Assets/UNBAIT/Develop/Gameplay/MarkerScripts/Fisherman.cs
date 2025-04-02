@@ -6,5 +6,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
     {
         //TODO: just throwing some ideas. replace
         public bool IsTired { get; set; }
+
+        public Hook Hook { get; set; }
     }
 }

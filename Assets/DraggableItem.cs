@@ -7,9 +7,9 @@ using Assets.UNBAIT.Develop.Gameplay;
 
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Transform originalParent;
-    private Canvas canvas;
-    private RectTransform rectTransform;
+    private Transform _originalParent;
+    private Canvas _canvas;
+    private RectTransform _rectTransform;
 
     private Image _image;
 
@@ -32,8 +32,8 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        originalParent = transform.parent;
-        transform.SetParent(canvas.transform);
+        _originalParent = transform.parent;
+        transform.SetParent(_canvas.transform);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -41,7 +41,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         if (Sprite == null)
             return;
 
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        _rectTransform.anchoredPosition += eventData.delta / _canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -52,14 +52,14 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             Inventory.Instance.RemoveItem(CurrentItem);
         }
 
-        transform.SetParent(originalParent);
-        rectTransform.anchoredPosition = Vector2.zero;
+        transform.SetParent(_originalParent);
+        _rectTransform.anchoredPosition = Vector2.zero;
     }
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
-        canvas = GetComponentInParent<Canvas>();
+        _rectTransform = GetComponent<RectTransform>();
+        _canvas = GetComponentInParent<Canvas>();
 
         _image = GetComponent<Image>();
     }

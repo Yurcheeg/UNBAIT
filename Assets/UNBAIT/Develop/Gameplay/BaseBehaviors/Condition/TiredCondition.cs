@@ -9,7 +9,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
     {
         private Fisherman _fisherman;
 
-        public IEnumerator TiredMeterEmpty()
+        public IEnumerator WaitUntilTired()
         {
             yield return new WaitUntil(() => _fisherman.IsTired);//TODO: update after decided on tired logic
 
@@ -20,8 +20,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
         {
             _fisherman = GetComponent<Fisherman>();
 
-            if (_fisherman == null)
-                throw new System.ArgumentNullException("Fisherman is null");
+            StartCoroutine(WaitUntilTired());
         }
     }
 }
