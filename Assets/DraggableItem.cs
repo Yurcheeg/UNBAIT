@@ -17,7 +17,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         get => _image.sprite;
 
-        set => value = _image.sprite;
+        set => _image.sprite = value;
     }
 
     public Item CurrentItem { get; private set; }
@@ -28,7 +28,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         UpdateSprite();
     }
 
-    private void UpdateSprite() => _image.sprite = CurrentItem != null ? CurrentItem.Sprite : null;
+    private void UpdateSprite() => Sprite = CurrentItem != null ? CurrentItem.Sprite : null;
 
     public void OnBeginDrag(PointerEventData eventData)
     {

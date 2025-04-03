@@ -15,7 +15,7 @@ namespace Assets.UNBAIT.Develop.Gameplay
 
         public bool IsFull => _items.Count == MaxSize;
 
-        public static Inventory Instance { get; private set; } //TODO: hmmm
+        public static Inventory Instance { get; private set; }
 
         public bool TryAddItem(Item item)
         {
@@ -57,14 +57,9 @@ namespace Assets.UNBAIT.Develop.Gameplay
         private void Awake()
         {
             if (Instance == null)
-            {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
             else
-            {
                 Destroy(this);
-            }
         }
     }
 }

@@ -18,6 +18,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
         public bool IsDisabled => false;
 
         [ContextMenu("Spawn")]
+        public void Spawn() => Spawn(_entityToSpawn);
+
         public override Entity Spawn(Entity prefab)
         {
             Entity entity = base.Spawn(prefab);
@@ -37,7 +39,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
             if (SpawnLimitReached)
                 yield break;
 
-            yield return new WaitForSecondsRealtime(_spawnDelay);
+            yield return new WaitForSeconds(_spawnDelay);
             Spawn(_entityToSpawn);
 
             _count++;

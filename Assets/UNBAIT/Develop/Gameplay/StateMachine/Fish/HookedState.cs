@@ -1,4 +1,5 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish;
+﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+using Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish;
 
 namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract
 {
@@ -6,9 +7,13 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract
     {
         public HookedState(FishFSM fsm) : base(fsm)
         {
-        }
 
-        //TODO: DO STH
-        //ACTUALLY, MAYBE NOT
+        }
+        public override void Update()
+        {
+            base.Update();
+            if (FSM.Hook == null)
+                FSM.Unhook();
+        }
     }
 }

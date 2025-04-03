@@ -23,8 +23,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         public override void Update()
         {
             base.Update();
-            if(FSM.Hook == null)
-                FSM.ThrowHook();
+
+            //if(FSM.Hook == null) //TODO: this causes duplication on initial hook throw
+            //    FSM.ThrowHook();
         }
     }
 }

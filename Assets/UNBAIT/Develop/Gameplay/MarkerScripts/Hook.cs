@@ -1,4 +1,5 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
+using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
 using System;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
         private Entity _hookedEntity = null;
 
         [field: SerializeField] public bool InUse { get; private set; } = false;
+        public bool HasReturned { get; private set; }
 
         public bool TryHookEntity(Entity entity)
         {
@@ -41,8 +43,10 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
 
         private void OnDestroy()
         {
-            if (_hookedEntity != null)
+            if (_hookedEntity != null && HasReturned)
+            {
                 Destroy(_hookedEntity.gameObject);
+            }
             
             Destroy(gameObject);
         }
@@ -52,7 +56,10 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
         private void DestroyWhenReturned()
         {
             if (transform.position.y > startPosition.y)
+            {
+                HasReturned = true;
                 OnDestroy();//TODO: feels illegal. also doesn't work with hooks being close
+            }
         }
     }
 }

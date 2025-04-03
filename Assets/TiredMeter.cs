@@ -1,5 +1,4 @@
 using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +22,7 @@ public class TiredMeter : MonoBehaviour
 
     private IEnumerator DrainAfterDelay(float delay)
     {
-        yield return new WaitForSecondsRealtime(delay);
+        yield return new WaitForSeconds(delay);
 
         Drain();
 
@@ -32,8 +31,7 @@ public class TiredMeter : MonoBehaviour
 
     private void Drain()
     {
-        bool isReeling = false;
-        _value -= isReeling ? _drainRate * _reelingMultiplier : _drainRate;
+        _value -= _fisherman.IsReeling ? _drainRate * _reelingMultiplier : _drainRate;
 
         _slider.value = _value;
     }
@@ -55,12 +53,6 @@ public class TiredMeter : MonoBehaviour
         if(_value <= _slider.minValue)
             _fisherman.IsTired = true;
     }
-    //private void FixedUpdate()
-    //{
-    //    //_value = _value <= _minimumValue ? _value  
-    //}
-    private void Awake()
-    {
-        _slider = GetComponent<Slider>();
-    }
+
+    private void Awake() => _slider = GetComponent<Slider>();
 }

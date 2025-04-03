@@ -13,22 +13,32 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
 
         public override Hook Spawn(Hook prefab)
         {
+            if (prefab == null)
+                throw new NullReferenceException("Prefab is not assigned");
+
             Hook hook = base.Spawn(prefab);
-            hook.gameObject.SetActive(false);
-            StartCoroutine(ActivateAfterDelay(hook));
             return hook;
         }
 
+        public void Spawn(float delay, Action spawned)
+        {
+            CustomCoroutine.Instance.WaitThenExecute(delay, () =>
+            {
+                Hook hook = Spawn(_hookPrefab);
+                spawned?.Invoke();
+            });
+        }
         public Hook ThrowHook() => Spawn(_hookPrefab);
 
-        private IEnumerator ActivateAfterDelay(Hook hook)
+        public void ThrowHook(float delay, Action<Hook> hookReady)
         {
-            yield return new WaitForSecondsRealtime(_spawnDelay);
-
-            if (hook == null)
-                yield break;
-            
-            hook.gameObject.SetActive(true);
+            Spawn(delay, () =>
+            {
+                Hook hook = Spawn(_hookPrefab);
+                hookReady.Invoke(hook);
+            });
         }
+
+
     }
 }

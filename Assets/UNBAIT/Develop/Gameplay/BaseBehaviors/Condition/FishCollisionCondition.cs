@@ -8,10 +8,11 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent<Fish>(out _) == false)
+            if (collision.gameObject.TryGetComponent(out Fish fish) == false)
                 return;
 
-            MeetCondition();
+            if (fish.IsHooked)
+                MeetCondition();
         }
     }
 }

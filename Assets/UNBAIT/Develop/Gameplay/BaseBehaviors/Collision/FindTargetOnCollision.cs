@@ -36,7 +36,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
                 if (entity == null)
                     continue;
 
-                if (entity.TryGetComponent<Hook>(out Hook hook) && hook.InUse)//TODO: costyl'
+                if (entity.TryGetComponent<Hook>(out Hook hook) && hook.InUse)//TODO: workaround :)
                     continue;
 
                 //TODO: replace after replacing the method

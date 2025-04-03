@@ -25,13 +25,15 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 
         private void OnPositionReached() => ChangeState(new FishingState(this));
 
-        public void ThrowHook() => _fisherman.Hook = _hookSpawner.ThrowHook();
+        public void ThrowHook() => CustomCoroutine.Instance.WaitOnConditionThenExecute(
+            () => _fisherman.IsStunned == false,
+            () => _fisherman.Hook = _hookSpawner.ThrowHook()
+        );
 
         private void Update() => CurrentState?.Update();
 
         private void Awake()
         {
-            //TODO: decouple 
             _entity = GetComponent<MovingEntity>();
             _stopOnRandomPoint = GetComponent<StopOnRandomPoint>();
             _hookSpawner = GetComponent<HookSpawner>();

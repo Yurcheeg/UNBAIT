@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 6999661230614612999}
   - component: {fileID: 1390394245472758664}
   - component: {fileID: 7286281410214602080}
+  - component: {fileID: -8678243031250324516}
   - component: {fileID: 7997119192048701050}
   - component: {fileID: 5678737423679480335}
   - component: {fileID: 5945320632146912831}
   - component: {fileID: 5516602117870739607}
   - component: {fileID: 971611688414068576}
-  - component: {fileID: -8678243031250324516}
   - component: {fileID: 2929396089056605502}
   - component: {fileID: 667022046317179757}
   - component: {fileID: 5360519507167078813}
@@ -178,6 +178,21 @@ MonoBehaviour:
   _movementConstrains:
     <MoveX>k__BackingField: 1
     <MoveY>k__BackingField: 0
+--- !u!114 &-8678243031250324516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406229563526606959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41176c298914277478532dc9d927fd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IsTired>k__BackingField: 0
+  <IsStunned>k__BackingField: 0
+  <StunDuration>k__BackingField: 6
 --- !u!114 &7997119192048701050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,18 +254,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6037ecf7bb5bbde4eb29b0d3af671c54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-8678243031250324516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2406229563526606959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41176c298914277478532dc9d927fd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2929396089056605502

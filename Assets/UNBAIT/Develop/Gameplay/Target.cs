@@ -9,7 +9,6 @@ namespace Assets.UNBAIT.Develop.Gameplay
         private static readonly Dictionary<EntityType, Type> _targetsToType = new Dictionary<EntityType, Type>()
         {
             {EntityType.None, null },
-            {EntityType.Cursor, typeof(Cursor) },
             {EntityType.Hook, typeof(Hook) },
             {EntityType.Fisherman, typeof(Fisherman) },
             {EntityType.Fish, typeof(Fish) }
@@ -30,7 +29,6 @@ namespace Assets.UNBAIT.Develop.Gameplay
         None = 0b_0000,
 
         Hook = 0b_0001,
-        Cursor = 0b_0010,
         Fisherman = 0b_0100,
         Fish = 0b_1000
     }
