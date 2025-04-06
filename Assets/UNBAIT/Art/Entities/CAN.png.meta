@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: f419c5edf07905745acdc65ccb0564e7
+guid: ef2e98f1f44c5ad4497c5aa3b3734ab7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5642248098443613038
-    second: JELLYFISH_ROTATED-Sheet_0
-  - first:
-      213: 5141547275939615164
-    second: JELLYFISH_ROTATED-Sheet_1
-  - first:
-      213: 2620076825956350399
-    second: JELLYFISH_ROTATED-Sheet_2
+      213: 5687075405490311160
+    second: CAN_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -81,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -119,67 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: JELLYFISH_ROTATED-Sheet_0
+      name: CAN_0
       rect:
         serializedVersion: 2
         x: 5
-        y: 3
-        width: 26
-        height: 26
+        y: 2
+        width: 20
+        height: 29
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e63da5a60ca4d4e40800000000000000
-      internalID: 5642248098443613038
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JELLYFISH_ROTATED-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 3
-        width: 24
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cb11242a1027a5740800000000000000
-      internalID: 5141547275939615164
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: JELLYFISH_ROTATED-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 68
-        y: 3
-        width: 28
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fb97c5fcdf16c5420800000000000000
-      internalID: 2620076825956350399
+      spriteID: 8ff4c1b23fc8cee40800000000000000
+      internalID: 5687075405490311160
       vertices: []
       indices: 
       edges: []
@@ -188,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 25ace284d7de7eb4598434da9b28066a
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      JELLYFISH_ROTATED-Sheet_0: 5642248098443613038
-      JELLYFISH_ROTATED-Sheet_1: 5141547275939615164
-      JELLYFISH_ROTATED-Sheet_2: 2620076825956350399
+      CAN_0: 5687075405490311160
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

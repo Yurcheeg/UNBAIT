@@ -2,7 +2,7 @@
 
 namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
 {
-    public sealed class Boot : Entity, IHookable
+    public sealed class Junk : Entity, IHookable
     {
         public bool IsHooked { get; set; }
     }
