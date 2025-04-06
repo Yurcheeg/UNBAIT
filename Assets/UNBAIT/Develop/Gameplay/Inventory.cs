@@ -30,7 +30,7 @@ namespace Assets.UNBAIT.Develop.Gameplay
             {
                 if (item.TryGetComponent<MovingEntity>(out MovingEntity entity))//TODO: fix. maybe replace
                 {
-                    entity.Movable.SetDirection(Vector2.right);
+                    entity.Movable.SetDirection(Vector2.up);
                     entity.IsMoving = false;
                 }
 
