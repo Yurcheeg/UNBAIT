@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
 {
     [RequireComponent(typeof(MovingEntity))]
-    public class MoveHorizontally : MonoBehaviour
+    public class MoveHorizontally : MonoBehaviour//TODO: ADD COLLISION PREVENTION
     {
         private MovingEntity _entity;
 

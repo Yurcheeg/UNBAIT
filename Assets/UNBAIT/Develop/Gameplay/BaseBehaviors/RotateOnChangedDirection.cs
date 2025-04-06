@@ -11,8 +11,12 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         public void OnDirectionChanged(Vector2 direction) => _rotatable.RotateTowards(direction);
 
-        private void OnDisable() => _movable.DirectionChanged -= OnDirectionChanged;
-        
+        private void OnDestroy()
+        {
+            _movable.DirectionChanged -= OnDirectionChanged;
+            Destroy(gameObject);
+        }
+
         private void Awake()
         {
             _movable = GetComponent<Movable>();

@@ -10,7 +10,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
         {
             Vector2 mousePos = GetMousePosition();
 
-            Collider2D[] hits = Physics2D.OverlapPointAll(mousePos);//TODO: expensive. consider other options(IPointerDownHandler)
+            Collider2D[] hits = Physics2D.OverlapPointAll(mousePos);//HACK: expensive. consider other options(IPointerDownHandler)
             foreach (Collider2D hit in hits)
             {
                 if (hit.gameObject == target)

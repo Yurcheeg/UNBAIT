@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPositionValue: -5
   _endPositionValue: 5
-  _moveBackDelaySeconds: 1
+  _moveBackDelaySeconds: 0.5
   _movementConstrains:
     <MoveX>k__BackingField: 1
     <MoveY>k__BackingField: 0

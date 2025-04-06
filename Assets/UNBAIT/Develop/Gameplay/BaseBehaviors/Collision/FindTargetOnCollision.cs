@@ -36,7 +36,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
                 if (entity == null)
                     continue;
 
-                if (entity.TryGetComponent<Hook>(out Hook hook) && hook.InUse)//TODO: workaround :)
+                if (entity.TryGetComponent<Hook>(out Hook hook) && hook.InUse)//HACK
                     continue;
 
                 //TODO: replace after replacing the method

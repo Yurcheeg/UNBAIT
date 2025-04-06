@@ -1,4 +1,6 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
+using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +28,12 @@ namespace Assets.UNBAIT.Develop.Gameplay
 
             if (index < _itemSlot.Count)
             {
+                if (item.TryGetComponent<MovingEntity>(out MovingEntity entity))//TODO: fix. maybe replace
+                {
+                    entity.Movable.SetDirection(Vector2.right);
+                    entity.IsMoving = false;
+                }
+
                 item.transform.position = _itemSlot[index].transform.position;
                 _itemSlot[index].SetItem(item);
 

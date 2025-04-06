@@ -93,7 +93,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private void Awake()
         {
-            DestroyColidedObjects[] borders = FindObjectsByType<DestroyColidedObjects>(FindObjectsSortMode.None);//TODO : bad. replace asap
+            DestroyColidedObjects[] borders = FindObjectsByType<DestroyColidedObjects>(FindObjectsSortMode.None);//HACK
             _borders.AddRange(borders.Select(border => border.transform));
 
             _entity = GetComponent<MovingEntity>();

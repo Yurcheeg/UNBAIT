@@ -1,6 +1,4 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
-using System;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
@@ -18,7 +16,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
             float dot = Vector2.Dot(directionToEntity, Movable.Direction.normalized);
             return dot <= 0;
         }
-        //TODO: just testing, pls replace ASAP
+        //HACK: just testing, pls replace ASAP
         //summary: if direction is the same as the remainder of this pos and hook pos we skip it
         //if its the same that means that this object is already past this hook
 

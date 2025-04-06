@@ -24,7 +24,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             if (collision.gameObject.TryGetComponent(out Entity entity) == false)   
                 return;
             if(entity.GetType() == _targetType)
-                Stun(entity as Fisherman);//TODO: fix if bored
+                Stun(entity as Fisherman);//HACK: fix if bored
         }
         
         private void Awake() => _targetType = Target.GetType(_targetToFind);
