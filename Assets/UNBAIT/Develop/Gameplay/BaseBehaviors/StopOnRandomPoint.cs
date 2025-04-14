@@ -1,4 +1,5 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition.Abstract;
+using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using System;
 using System.Collections;
@@ -83,6 +84,17 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             {
                 condition.ConditionMet -= OnConditionMet;
             }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (TryGetComponent<Fisherman>(out _) == false)
+                return;
+
+            if (collision.gameObject.TryGetComponent<Fisherman>(out _) == false)
+                return;
+
+            _targetPosition += Mathf.Sign(_targetPosition) * offset * 3;
         }
 
         private void Awake()

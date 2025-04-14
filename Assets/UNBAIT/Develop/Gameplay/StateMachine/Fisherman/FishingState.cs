@@ -10,22 +10,47 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         public override void Enter()
         {
             base.Enter();
-            FSM.ThrowHook();
+
+            if (FSM.Hook != null)
+                FSM.Hook.Destroyable.Destroyed -= OnHookDestroyed;
+
+            ThrowHook();
         }
 
         public override void Exit()
         {
             base.Exit();
-            if(FSM.Hook != null)
+
+            if (FSM.Hook != null)
+            {
                 Object.Destroy(FSM.Hook);
+                FSM.Hook.Destroyable.Destroyed -= OnHookDestroyed;
+            }
         }
 
         public override void Update()
         {
             base.Update();
+            if (FSM.Fisherman.IsStunned && FSM.Hook != null)
+                Object.Destroy(FSM.Hook.gameObject);
+        }
 
-            //if(FSM.Hook == null) //TODO: this causes duplication on initial hook throw
-            //    FSM.ThrowHook();
+        private void OnHookDestroyed()
+        {
+            if (FSM.Hook != null)
+                FSM.Hook.Destroyable.Destroyed -= OnHookDestroyed;
+
+            ThrowHook();
+        }
+
+        private void ThrowHook()
+        {
+            FSM.ThrowHook();
+
+            CustomCoroutine.Instance.WaitOnConditionThenExecute(
+                () => FSM.Hook != null,
+                () => FSM.Hook.Destroyable.Destroyed += OnHookDestroyed
+                );
         }
     }
 }

@@ -12,21 +12,35 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private void Stun(Fisherman fisherman)
         {
-            fisherman.IsStunned = true;
+            fisherman.Stun();
 
-            CustomCoroutine.Instance.WaitThenExecute(fisherman.StunDuration,
-                () => fisherman.IsStunned = false
+            Animator animator = fisherman.Animator;
+            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+            animator.SetTrigger("IsShocked");
+
+            CustomCoroutine.Instance.WaitOnConditionThenExecute(
+                () => stateInfo.normalizedTime >= 1f,
+                () => animator.SetBool("IsStunned", true)
                 );
+            //TODO: indicate that it's stunned somehow
+
+            CustomCoroutine.Instance.WaitOnConditionThenExecute(
+                () => fisherman.IsStunned == false,
+                () => animator.SetBool("IsStunned", false)
+                    );
+            //TODO: remove indicator;
+
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent(out Entity entity) == false)   
+            if (collision.gameObject.TryGetComponent(out Entity entity) == false)
                 return;
-            if(entity.GetType() == _targetType)
+            if (entity.GetType() == _targetType)
                 Stun(entity as Fisherman);//HACK: fix if bored
         }
-        
+
         private void Awake() => _targetType = Target.GetType(_targetToFind);
     }
 }

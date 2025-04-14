@@ -11,7 +11,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
 
         public IEnumerator WaitUntilTired()
         {
-            yield return new WaitUntil(() => _fisherman.IsTired);//TODO: update after decided on tired logic
+            yield return new WaitUntil(() => _fisherman.IsTired);
 
             MeetCondition();
         }

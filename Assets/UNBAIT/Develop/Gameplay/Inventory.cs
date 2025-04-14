@@ -34,7 +34,7 @@ namespace Assets.UNBAIT.Develop.Gameplay
                     entity.IsMoving = false;
                 }
 
-                item.transform.position = _itemSlot[index].transform.position;
+                item.transform.position = _itemSlot[index].transform.position;//HACK: xd
                 _itemSlot[index].SetItem(item);
 
                 _items.Add(item);

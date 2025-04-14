@@ -5,7 +5,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
     public class Destroyable : MonoBehaviour
     {
-        public Action Destroyed;
+        public event Action Destroyed;
 
         private void OnDestroy()
         {

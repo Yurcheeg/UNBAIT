@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 2929396089056605502}
   - component: {fileID: 667022046317179757}
   - component: {fileID: 5360519507167078813}
+  - component: {fileID: 968439989409488322}
   m_Layer: 0
   m_Name: Fisherman
   m_TagString: Untagged
@@ -43,6 +44,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8686760558658384904}
+  - {fileID: 2708329797334599427}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &803972462205294899
@@ -89,7 +91,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: -9123540318597327758, guid: fb23d44da30039b47a0d6ce102d45cfb, type: 3}
+  m_Sprite: {fileID: 167149855689933840, guid: ab5f8c3b97d6aff4f98f3336a762c91c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,9 +138,9 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0.01, w: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.93, y: 0.9}
+    oldSize: {x: 1.94, y: 0.92}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -172,8 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6527565672faac5448b0d0c0bc523359, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPositionValue: -5
-  _endPositionValue: 5
+  _startPositionValue: -4
+  _endPositionValue: 4
   _moveBackDelaySeconds: 0.5
   _movementConstrains:
     <MoveX>k__BackingField: 1
@@ -192,7 +194,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsTired>k__BackingField: 0
   <IsStunned>k__BackingField: 0
-  <StunDuration>k__BackingField: 6
+  <StunDuration>k__BackingField: 3
+  <Hook>k__BackingField: {fileID: 0}
+  <ThrowDelay>k__BackingField: 1
 --- !u!114 &7997119192048701050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b993a2e4f4c3ae84d9dfc528f045adb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnPoint: {fileID: 0}
+  _spawnPoint: {fileID: 2708329797334599427}
   _hookPrefab: {fileID: 3770785432691889869, guid: a6353924e281a864f8815e12227905af, type: 3}
   _spawnDelay: 2
 --- !u!114 &5678737423679480335
@@ -307,6 +311,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!95 &968439989409488322
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406229563526606959}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 58ab6244daf836142bcea0f82f5e3e99, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6485105445091490622
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,6 +435,37 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &6723657273821599920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2708329797334599427}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2708329797334599427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6723657273821599920}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.236, y: -0.603, z: 0}
+  m_LocalScale: {x: 0.79878163, y: 0.5710044, z: 0.5710044}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2692455225068941490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6950035872806754652
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +611,7 @@ MonoBehaviour:
   _value: 0
   _minimumValue: 0
   _maximumValue: 100
-  _drainSpeed: 3
+  _drainSpeed: 1
   _drainRate: 5
   _reelingMultiplier: 2
 --- !u!1 &8193994337480793562
@@ -658,7 +715,7 @@ PrefabInstance:
       objectReference: {fileID: -8678243031250324516}
     - target: {fileID: 4712902400818674807, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
       propertyPath: _drainSpeed
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4712902400818674807, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
       propertyPath: _maximumValue

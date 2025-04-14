@@ -3,6 +3,7 @@ using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
+using System;
 
 namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 {
@@ -13,22 +14,23 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         private StopOnRandomPoint _stopOnRandomPoint;
 
         private HookSpawner _hookSpawner;
-        private MarkerScripts.Fisherman _fisherman;
 
-        public Hook Hook => _fisherman.Hook;
+        public MarkerScripts.Fisherman Fisherman { get; private set; }
+
+        public Hook Hook => Fisherman.Hook;
 
         public override void StartMovement() => _entity.IsMoving = true;
 
         public override void StopMovement() => _entity.IsMoving = false;
 
+        public void ThrowHook() => CustomCoroutine.Instance.WaitOnConditionThenExecute(
+            () => Fisherman.IsStunned == false,
+            () => Fisherman.Hook = _hookSpawner.ThrowHook()
+        );
+
         private void OnPositionSet() => ChangeState(new MovingState<FishermanFSM>(this));
 
         private void OnPositionReached() => ChangeState(new FishingState(this));
-
-        public void ThrowHook() => CustomCoroutine.Instance.WaitOnConditionThenExecute(
-            () => _fisherman.IsStunned == false,
-            () => _fisherman.Hook = _hookSpawner.ThrowHook()
-        );
 
         private void Update() => CurrentState?.Update();
 
@@ -37,21 +39,29 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             _entity = GetComponent<MovingEntity>();
             _stopOnRandomPoint = GetComponent<StopOnRandomPoint>();
             _hookSpawner = GetComponent<HookSpawner>();
-            _fisherman = GetComponent<MarkerScripts.Fisherman>();
+            Fisherman = GetComponent<MarkerScripts.Fisherman>();
 
-            if (CurrentState == null)
-                ChangeState(new IdleState<FishermanFSM>(this));
+            Fisherman.Stunned += OnStunned;
+            Fisherman.Unstunned += OnUnstunned;
 
             _stopOnRandomPoint.PositionSet += OnPositionSet;
             _stopOnRandomPoint.PositionReached += OnPositionReached;
+
+            ChangeState(new IdleState<FishermanFSM>(this));
+
         }
+
+        private void OnStunned() => ChangeState(new StunState(this));
+
+        private void OnUnstunned() => ChangeState(new FishingState(this));
 
         private void OnDestroy()
         {
+            Fisherman.Stunned -= OnStunned;
+            Fisherman.Unstunned -= OnUnstunned;
+
             _stopOnRandomPoint.PositionSet -= OnPositionSet;
             _stopOnRandomPoint.PositionReached -= OnPositionReached;
-
-            Destroy(gameObject);
         }
     }
 }

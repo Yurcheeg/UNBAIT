@@ -43,12 +43,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
 
         private void OnDestroy()
         {
-            if (_hookedEntity != null && HasReturned)
-            {
+            if (_hookedEntity != null && (HasReturned || _hookedEntity.TryGetComponent<Item>(out _)))
                 Destroy(_hookedEntity.gameObject);
-            }
             
-            Destroy(gameObject);
         }
 
         private void Start() => startPosition = transform.position;
