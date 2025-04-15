@@ -3,7 +3,7 @@ using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
 using System;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 {
     public class StunOnTargetCollision : MonoBehaviour
     {

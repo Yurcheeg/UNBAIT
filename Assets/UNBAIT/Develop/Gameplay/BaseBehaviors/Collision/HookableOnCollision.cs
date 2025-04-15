@@ -3,7 +3,7 @@ using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
 using System;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 {
     public class HookableOnCollision : MonoBehaviour
     {
@@ -13,7 +13,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private void OnCollisionEnter2D(Collision2D collision)
         {   
-            if (collision.gameObject.TryGetComponent<Hook>(out Hook hook) == false)
+            if (collision.gameObject.TryGetComponent(out Hook hook) == false)
                 return;
 
             if (hook.TryHookEntity(_entity))

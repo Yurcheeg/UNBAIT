@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition.Abstract
 {
-    public abstract class MoveBackCondition : MonoBehaviour
+    public abstract class ReturnCondition : MonoBehaviour
     {
         public Action ConditionMet;
         public bool IsConditionMet { get; protected set; }

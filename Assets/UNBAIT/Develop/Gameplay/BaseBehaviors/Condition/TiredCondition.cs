@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
 {
-    public class TiredCondition : MoveBackCondition
+    public class TiredCondition : ReturnCondition
     {
         private Fisherman _fisherman;
 

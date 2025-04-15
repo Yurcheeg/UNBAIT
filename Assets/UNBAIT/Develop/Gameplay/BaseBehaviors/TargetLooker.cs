@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {

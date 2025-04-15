@@ -11,10 +11,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
         {
             get
             {
-                //return _spawnPoint ?? transform;  - doesn't work with unity objects
-                return _spawnPoint != null
-                    ? _spawnPoint
-                    : transform;
+                return _spawnPoint != null ? _spawnPoint : transform;
             }
 
             set => _spawnPoint = value;

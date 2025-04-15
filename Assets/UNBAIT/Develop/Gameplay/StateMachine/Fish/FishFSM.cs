@@ -1,9 +1,9 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
+using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision;
 using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman;
-using System;
 
 namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish
 {

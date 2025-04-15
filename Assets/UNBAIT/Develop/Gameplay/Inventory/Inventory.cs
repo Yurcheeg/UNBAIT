@@ -1,11 +1,10 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay
+namespace Assets.UNBAIT.Develop.Gameplay.Inventory
 {
     public class Inventory : MonoBehaviour
     {

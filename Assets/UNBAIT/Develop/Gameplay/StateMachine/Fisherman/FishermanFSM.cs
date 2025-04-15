@@ -3,7 +3,6 @@ using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
-using System;
 
 namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 {

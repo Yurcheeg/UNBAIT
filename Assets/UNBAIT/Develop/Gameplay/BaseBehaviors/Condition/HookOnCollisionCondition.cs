@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
 {
-    public class HookOnCollisionCondition : MoveBackCondition
+    public class HookOnCollisionCondition : ReturnCondition
     {
         private Hook _hook;
 

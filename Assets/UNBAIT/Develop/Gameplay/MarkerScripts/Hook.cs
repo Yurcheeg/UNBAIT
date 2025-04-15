@@ -1,6 +1,5 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
+﻿using Assets.UNBAIT.Develop.Gameplay.Inventory;
 using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
-using System;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts

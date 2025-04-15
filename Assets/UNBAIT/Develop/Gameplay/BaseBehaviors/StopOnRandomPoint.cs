@@ -32,7 +32,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private Vector3 _startPosition;
 
-        private List<MoveBackCondition> _conditions = new();
+        private List<ReturnCondition> _conditions = new();
         private MovingEntity _entity;
 
         public bool HasReachedPosition { get; private set; }
@@ -80,7 +80,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
                 return;
             IsMoveBackConditionMet = true;
 
-            foreach (MoveBackCondition condition in _conditions)
+            foreach (ReturnCondition condition in _conditions)
             {
                 condition.ConditionMet -= OnConditionMet;
             }
@@ -99,21 +99,21 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private void Awake()
         {
-            _conditions = GetComponents<MoveBackCondition>().ToList();
+            _conditions = GetComponents<ReturnCondition>().ToList();
             _entity = GetComponent<MovingEntity>();
         }
 
 
         private void OnDestroy()
         {
-            foreach (MoveBackCondition condition in _conditions)
+            foreach (ReturnCondition condition in _conditions)
             {
                 condition.ConditionMet -= OnConditionMet;
             }
         }
         private void Start()
         {
-            foreach (MoveBackCondition condition in _conditions)
+            foreach (ReturnCondition condition in _conditions)
             {
                 condition.ConditionMet += OnConditionMet;
             }

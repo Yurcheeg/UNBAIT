@@ -1,7 +1,5 @@
-﻿using Assets.UNBAIT.Develop.Gameplay;
-using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
-using System;
 using UnityEngine;
 
 namespace Assets.Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts

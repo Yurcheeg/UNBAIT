@@ -1,5 +1,4 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
-using Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish;
+﻿using Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish;
 
 namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract
 {

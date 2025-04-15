@@ -1,7 +1,7 @@
 using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 {
     public class DestroyColidedObjects : MonoBehaviour
     {

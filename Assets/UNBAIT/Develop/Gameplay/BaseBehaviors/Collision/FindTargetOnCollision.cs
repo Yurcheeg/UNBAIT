@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 {
     [RequireComponent(typeof(CircleCollider2D))]
     public sealed class FindTargetOnCollision : MonoBehaviour
@@ -36,7 +36,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
                 if (entity == null)
                     continue;
 
-                if (entity.TryGetComponent<Hook>(out Hook hook) && hook.InUse)//HACK
+                if (entity.TryGetComponent(out Hook hook) && hook.InUse)//HACK
                     continue;
 
                 //TODO: replace after replacing the method

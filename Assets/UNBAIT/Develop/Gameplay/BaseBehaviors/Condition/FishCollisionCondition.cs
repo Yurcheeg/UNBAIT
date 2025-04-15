@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
 {
-    public class FishCollisionCondition : MoveBackCondition//TODO: replace
+    public class FishCollisionCondition : ReturnCondition//TODO: replace
     {
         private void OnCollisionEnter2D(Collision2D collision)
         {

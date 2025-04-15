@@ -1,7 +1,7 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
+namespace Assets.UNBAIT.Develop.Gameplay.Inventory
 {
     [RequireComponent(typeof(Entity))]
     public sealed class Item : MonoBehaviour
@@ -16,7 +16,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
         {
             if (Input.GetMouseButtonDown(1))
             {
-                if (Cursor.IsMouseOverTarget(gameObject) == false)
+                if (MarkerScripts.Cursor.IsMouseOverTarget(gameObject) == false)
                     return;
 
                 if (IsHooked)

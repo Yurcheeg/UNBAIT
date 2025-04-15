@@ -18,9 +18,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
         [field: SerializeField] public float StunDuration { get; private set; }
 
         [field: Space]
-        [field: SerializeField] public Hook Hook { get; set; }
 
         [field: SerializeField] public float ThrowDelay { get; private set; }
+        public Hook Hook { get; set; }
 
         public Animator Animator { get; private set; }
 
