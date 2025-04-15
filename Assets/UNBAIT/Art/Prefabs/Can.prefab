@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1076563620375700052}
   - component: {fileID: 7248175337326564362}
-  - component: {fileID: 1163081513547796651}
-  - component: {fileID: 4186160696498393396}
   - component: {fileID: 6316908098672605796}
   - component: {fileID: 9196095259797638556}
   - component: {fileID: 8510396232957357301}
   - component: {fileID: 3177745009780960909}
+  - component: {fileID: 1163081513547796651}
+  - component: {fileID: 4186160696498393396}
   m_Layer: 0
   m_Name: Can
   m_TagString: Untagged
@@ -93,6 +93,54 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6316908098672605796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215401821298823185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6037ecf7bb5bbde4eb29b0d3af671c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9196095259797638556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215401821298823185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de23e244082fd6a44bdf94891fd4f83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8510396232957357301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215401821298823185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ba229577b069e14491d4b7aa2f9e32a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3177745009780960909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5215401821298823185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c525e0c1c2ce8364c95ffac26d509234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &1163081513547796651
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -154,7 +202,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 0.1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -165,52 +213,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
---- !u!114 &6316908098672605796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5215401821298823185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6037ecf7bb5bbde4eb29b0d3af671c54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9196095259797638556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5215401821298823185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de23e244082fd6a44bdf94891fd4f83e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8510396232957357301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5215401821298823185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba229577b069e14491d4b7aa2f9e32a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3177745009780960909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5215401821298823185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c525e0c1c2ce8364c95ffac26d509234, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Constraints: 5

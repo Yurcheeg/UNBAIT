@@ -94,7 +94,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             if (collision.gameObject.TryGetComponent<Fisherman>(out _) == false)
                 return;
 
-            _targetPosition += Mathf.Sign(_targetPosition) * offset * 3;
+            _targetPosition += Mathf.Sign(_targetPosition) /** offset*/ * 2;
         }
 
         private void Awake()

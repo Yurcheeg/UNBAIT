@@ -12,7 +12,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         private Entity _entity;
 
         private void OnCollisionEnter2D(Collision2D collision)
-        {
+        {   
             if (collision.gameObject.TryGetComponent<Hook>(out Hook hook) == false)
                 return;
 

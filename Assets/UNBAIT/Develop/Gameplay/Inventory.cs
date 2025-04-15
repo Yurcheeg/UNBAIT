@@ -34,6 +34,11 @@ namespace Assets.UNBAIT.Develop.Gameplay
                     entity.IsMoving = false;
                 }
 
+                if(item.TryGetComponent<Junk>(out Junk junk))//HACK
+                {
+                    junk.Ground();
+                }
+
                 item.transform.position = _itemSlot[index].transform.position;//HACK: xd
                 _itemSlot[index].SetItem(item);
 

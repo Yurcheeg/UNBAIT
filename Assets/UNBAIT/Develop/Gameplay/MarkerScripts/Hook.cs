@@ -19,6 +19,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
             if (InUse)
                 return false;
 
+            if (entity is Junk junk && (junk.HasReachedGround == false))//HACK wow another junk ground check very cool pls fix
+                return false;
+
             if (entity is not IHookable hookable)
                 return false;
 

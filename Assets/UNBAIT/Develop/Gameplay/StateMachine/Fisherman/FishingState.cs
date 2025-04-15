@@ -23,8 +23,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 
             if (FSM.Hook != null)
             {
-                Object.Destroy(FSM.Hook);
                 FSM.Hook.Destroyable.Destroyed -= OnHookDestroyed;
+                Object.Destroy(FSM.Hook);
             }
         }
 
