@@ -8,7 +8,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
     {
         private Vector3 startPosition;
 
-        private Entity _hookedEntity = null;
+        public Entity HookedEntity { get; private set; }
 
         [field: SerializeField] public bool InUse { get; private set; } = false;
         public bool HasReturned { get; private set; }
@@ -27,9 +27,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
             if (hookable.IsHooked)
                 return false;
 
-            _hookedEntity = entity;
+            HookedEntity = entity;
             InUse = true;
-            hookable.IsHooked = true;
+            //hookable.IsHooked = true; //race condition w/ HookOnCollision
 
             return true;
         }
@@ -39,14 +39,14 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
             if (InUse)
                 DestroyWhenReturned();
 
-            if (_hookedEntity != null)
-                _hookedEntity.transform.position = transform.position;
+            if (HookedEntity != null)
+                HookedEntity.transform.position = transform.position;
         }
 
         private void OnDestroy()
         {
-            if (_hookedEntity != null && (HasReturned || _hookedEntity.TryGetComponent<Item>(out _)))
-                Destroy(_hookedEntity.gameObject);
+            if (HookedEntity != null && (HasReturned || HookedEntity.TryGetComponent<Item>(out _)))
+                Destroy(HookedEntity.gameObject);
             
         }
 

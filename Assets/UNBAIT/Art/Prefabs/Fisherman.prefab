@@ -196,7 +196,6 @@ MonoBehaviour:
   <IsTired>k__BackingField: 0
   <IsStunned>k__BackingField: 0
   <StunDuration>k__BackingField: 3
-  <Hook>k__BackingField: {fileID: 0}
   <ThrowDelay>k__BackingField: 1
 --- !u!114 &7997119192048701050
 MonoBehaviour:
@@ -462,7 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2708329797334599427}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: HookSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -600,7 +599,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2273756865177921364}
   m_FillRect: {fileID: 7400460468507572974}
   m_HandleRect: {fileID: 0}
@@ -627,10 +626,10 @@ MonoBehaviour:
   _fisherman: {fileID: -8678243031250324516}
   _value: 0
   _minimumValue: 0
-  _maximumValue: 100
+  _maximumValue: 60
   _drainSpeed: 1
   _drainRate: 5
-  _reelingMultiplier: 2
+  _reelingMultiplier: 3
 --- !u!1 &8193994337480793562
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4712902400818674807, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
       propertyPath: _maximumValue
-      value: 100
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4712902400818674807, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
       propertyPath: _minimumValue
@@ -744,11 +743,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4712902400818674807, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
       propertyPath: _reelingMultiplier
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6384427868919058667, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
       propertyPath: m_Value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6384427868919058667, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6384427868919058667, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
       propertyPath: m_Colors.m_NormalColor.b

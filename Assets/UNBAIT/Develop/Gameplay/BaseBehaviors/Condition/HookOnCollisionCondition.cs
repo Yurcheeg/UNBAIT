@@ -28,14 +28,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
                 return;
 
             MeetCondition();
+            hookable.IsHooked = true;
         }
 
-        private void Awake()
-        {
-            _hook = GetComponent<Hook>();
-
-            if (_hook == null)
-                throw new ArgumentNullException("Hook is null");
-        }
+        private void Awake() => _hook = GetComponent<Hook>();
     }
 }

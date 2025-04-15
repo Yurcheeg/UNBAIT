@@ -32,7 +32,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 
         private Vector3 _startPosition;
 
-        private List<ReturnCondition> _conditions = new();
+        [SerializeField] private List<ReturnCondition> _conditions = new();
         private MovingEntity _entity;
 
         public bool HasReachedPosition { get; private set; }
@@ -46,15 +46,15 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             PositionReached?.Invoke();
 
             if (_conditions.Count == 0)
-                throw new ArgumentNullException($"No conditions, {nameof(MoveBack)} will not trigger");
+                throw new ArgumentNullException($"No conditions, {nameof(Return)} will not trigger");
 
             yield return new WaitUntil(() => IsMoveBackConditionMet);
 
             yield return new WaitForSeconds(_moveBackDelaySeconds);
-            StartCoroutine(MoveBack());
+            StartCoroutine(Return());
         }
 
-        private IEnumerator MoveBack()//TODO: replace
+        private IEnumerator Return()//TODO: replace
         {
             _entity.Movable.SetDirection(_startPosition - transform.position);
 
@@ -79,7 +79,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             if (IsMoveBackConditionMet)
                 return;
             IsMoveBackConditionMet = true;
-
+            Debug.LogWarning("condition met");
             foreach (ReturnCondition condition in _conditions)
             {
                 condition.ConditionMet -= OnConditionMet;

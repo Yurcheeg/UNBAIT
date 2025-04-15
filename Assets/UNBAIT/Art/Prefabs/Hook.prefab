@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 510501444840923170}
   - component: {fileID: 8690271988247049045}
   - component: {fileID: 3770785432691889869}
-  - component: {fileID: 8575145950322424033}
   - component: {fileID: 6189104392500473737}
   - component: {fileID: 487814106414283757}
+  - component: {fileID: 8575145950322424033}
   - component: {fileID: 6241502094392802898}
   - component: {fileID: -4284075154319670671}
   - component: {fileID: 5202117214572759670}
@@ -154,18 +154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <InUse>k__BackingField: 0
---- !u!114 &8575145950322424033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6145565103105055871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6037ecf7bb5bbde4eb29b0d3af671c54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6189104392500473737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +172,7 @@ MonoBehaviour:
   _movementConstrains:
     <MoveX>k__BackingField: 0
     <MoveY>k__BackingField: 1
+  _conditions: []
 --- !u!114 &487814106414283757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +187,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _direction: {x: 0, y: -1}
+--- !u!114 &8575145950322424033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6145565103105055871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6037ecf7bb5bbde4eb29b0d3af671c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6241502094392802898
 MonoBehaviour:
   m_ObjectHideFlags: 0
