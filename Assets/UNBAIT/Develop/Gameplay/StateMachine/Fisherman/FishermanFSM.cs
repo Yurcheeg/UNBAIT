@@ -1,5 +1,5 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+using Assets.UNBAIT.Develop.Gameplay.Entities;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
@@ -14,7 +14,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 
         private HookSpawner _hookSpawner;
 
-        public MarkerScripts.Fisherman Fisherman { get; private set; }
+        public Entities.Fisherman Fisherman { get; private set; }
 
         public Hook Hook => Fisherman.Hook;
 
@@ -27,7 +27,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             () => Fisherman.Hook = _hookSpawner.ThrowHook()
         );
 
-        private void OnPositionSet() => ChangeState(new MovingState<FishermanFSM>(this));
+        private void OnPositionSet() => ChangeState(new MovingState(this));
 
         private void OnPositionReached() => ChangeState(new FishingState(this));
 
@@ -38,7 +38,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             _entity = GetComponent<MovingEntity>();
             _stopOnRandomPoint = GetComponent<StopOnRandomPoint>();
             _hookSpawner = GetComponent<HookSpawner>();
-            Fisherman = GetComponent<MarkerScripts.Fisherman>();
+            Fisherman = GetComponent<Entities.Fisherman>();
 
             Fisherman.Stunned += OnStunned;
             Fisherman.Unstunned += OnUnstunned;

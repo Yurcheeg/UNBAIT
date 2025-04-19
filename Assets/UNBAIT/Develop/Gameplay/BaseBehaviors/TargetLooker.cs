@@ -1,11 +1,11 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
-using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
+﻿using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+using Assets.UNBAIT.Develop.Gameplay.Entities;
 using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision;
+using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
@@ -13,7 +13,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
     {
         public event Action PositionSet;
 
-        [SerializeField] private FindTargetOnCollision _findTargetOnCollision;
+        [SerializeField] private FindHookOnCollision _findTargetOnCollision;
 
         [SerializeField] private List<Transform> _borders;
 

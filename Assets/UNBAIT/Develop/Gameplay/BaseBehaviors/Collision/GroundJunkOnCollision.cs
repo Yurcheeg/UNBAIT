@@ -1,10 +1,10 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+﻿using Assets.UNBAIT.Develop.Gameplay.Entities;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 {
     [RequireComponent(typeof(Collider2D))]
-    public class GroundOnCollision : MonoBehaviour
+    public class GroundJunkOnCollision : MonoBehaviour
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {

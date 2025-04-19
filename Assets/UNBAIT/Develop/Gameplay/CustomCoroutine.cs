@@ -33,7 +33,6 @@ namespace Assets.UNBAIT.Develop.Gameplay
             action();
         }
 
-
         private void Awake()
         {
             if (Instance == null)

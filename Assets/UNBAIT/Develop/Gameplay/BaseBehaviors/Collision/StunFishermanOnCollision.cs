@@ -1,15 +1,10 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
-using System;
+﻿using Assets.UNBAIT.Develop.Gameplay.Entities;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 {
-    public class StunOnTargetCollision : MonoBehaviour
+    public class StunFishermanOnCollision : MonoBehaviour
     {
-        [SerializeField] private EntityType _targetToFind;
-        private Type _targetType;
-
         private void Stun(Fisherman fisherman)
         {
             fisherman.Stun();
@@ -35,12 +30,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent(out Entity entity) == false)
-                return;
-            if (entity.GetType() == _targetType)
-                Stun(entity as Fisherman);//HACK: fix if bored
+            if (collision.gameObject.TryGetComponent(out Fisherman fisherman))
+                Stun(fisherman);
         }
-
-        private void Awake() => _targetType = Target.GetType(_targetToFind);
     }
 }

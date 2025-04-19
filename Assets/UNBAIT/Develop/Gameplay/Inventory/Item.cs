@@ -1,4 +1,4 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
+﻿using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.Inventory
@@ -16,7 +16,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.Inventory
         {
             if (Input.GetMouseButtonDown(1))
             {
-                if (MarkerScripts.Cursor.IsMouseOverTarget(gameObject) == false)
+                if (Cursor.IsMouseOverTarget(gameObject) == false)
                     return;
 
                 if (IsHooked)

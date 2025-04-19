@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Cursor = Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Cursor;
+using Cursor = Assets.UNBAIT.Develop.Gameplay.Cursor;
 
 namespace Assets.UNBAIT.Develop.Gameplay.Inventory
 {

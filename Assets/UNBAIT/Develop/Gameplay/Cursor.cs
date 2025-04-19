@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
+namespace Assets.UNBAIT.Develop.Gameplay
 {
     public static class Cursor
     {

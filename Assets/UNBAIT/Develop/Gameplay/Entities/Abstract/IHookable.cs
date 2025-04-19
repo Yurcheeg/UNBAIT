@@ -1,4 +1,4 @@
-﻿namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract
+﻿namespace Assets.UNBAIT.Develop.Gameplay.Entities.Abstract
 {
     public interface IHookable
     {

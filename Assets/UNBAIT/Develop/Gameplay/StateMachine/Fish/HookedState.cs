@@ -4,14 +4,13 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract
 {
     public class HookedState : BaseState<FishFSM>
     {
-        public HookedState(FishFSM fsm) : base(fsm)
-        {
+        public HookedState(FishFSM fsm) : base(fsm) { }
 
-        }
         public override void Update()
         {
             base.Update();
-            if (FSM.Hook == null)
+
+            if (FSM.Fish.IsHooked == false)
                 FSM.Unhook();
         }
     }

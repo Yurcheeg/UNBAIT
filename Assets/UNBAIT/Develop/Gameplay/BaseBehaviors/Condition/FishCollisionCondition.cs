@@ -1,5 +1,5 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition.Abstract;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+using Assets.UNBAIT.Develop.Gameplay.Entities;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
@@ -9,7 +9,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
         private Fisherman _fisherman;
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent(out Fish fish) == false)
+            if (collision.gameObject.TryGetComponent(out Fish _) == false)
                 return;
 
             if(_fisherman.Hook.HookedEntity is Fish)

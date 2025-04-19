@@ -1,5 +1,5 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition.Abstract;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+using Assets.UNBAIT.Develop.Gameplay.Entities;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using System;
 using System.Collections;
@@ -51,10 +51,11 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             yield return new WaitUntil(() => IsMoveBackConditionMet);
 
             yield return new WaitForSeconds(_moveBackDelaySeconds);
+
             StartCoroutine(Return());
         }
 
-        private IEnumerator Return()//TODO: replace
+        private IEnumerator Return()
         {
             _entity.Movable.SetDirection(_startPosition - transform.position);
 
@@ -65,13 +66,15 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             yield return new WaitUntil(() => HasReachedTargetPosition(startValue));
 
             yield return new WaitForSeconds(1.5f);
+
             if (gameObject != null)
                 Destroy(gameObject);
         }
+
         private bool HasReachedTargetPosition(float targetPosition)
         {
             _position = _movementConstrains.GetLargestAxis(transform.position);
-            return Mathf.Abs(_position - targetPosition) < offset;//destroy if past offset
+            return Mathf.Abs(_position - targetPosition) < offset;
         }
 
         private void OnConditionMet()
@@ -79,7 +82,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             if (IsMoveBackConditionMet)
                 return;
             IsMoveBackConditionMet = true;
-            Debug.LogWarning("condition met");
+
             foreach (ReturnCondition condition in _conditions)
             {
                 condition.ConditionMet -= OnConditionMet;

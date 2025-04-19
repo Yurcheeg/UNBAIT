@@ -1,5 +1,5 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
+﻿using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
+using Assets.UNBAIT.Develop.Gameplay.Entities;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using System;
 using System.Collections.Generic;
@@ -8,19 +8,22 @@ using UnityEngine;
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 {
     [RequireComponent(typeof(CircleCollider2D))]
-    public sealed class FindTargetOnCollision : MonoBehaviour
+    public sealed class FindHookOnCollision : MonoBehaviour
     {
         public event Action<Entity> TargetFound;
 
-        [SerializeField] private EntityType _targetToFind;
-        private Type _targetType;
-        private Entity _target = null;
+        private Hook _target = null;
 
-        [SerializeField] private List<Entity> _entitiesInRange = new();
+        [SerializeField] private List<Hook> _hooksInRange = new();
+
+        [SerializeField] private Fish _fish;
         
         private void UpdateClosestTarget()
         {
-            if (_entitiesInRange.Count == 0)
+            if (_fish.IsHooked)
+                return;
+
+            if (_hooksInRange.Count == 0)
             {
                 _target = null;
 
@@ -29,26 +32,26 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
             }
 
             float closestEntityDistance = float.MaxValue;
-            Entity closestEntity = null;
+            Hook closestEntity = null;
 
-            foreach (Entity entity in _entitiesInRange)
+            foreach (Hook hook in _hooksInRange)
             {
-                if (entity == null)
+                if (hook == null)
                     continue;
 
-                if (entity.TryGetComponent(out Hook hook) && hook.InUse)//HACK
+                if (hook.InUse)
                     continue;
 
                 //TODO: replace after replacing the method
-                if (GetComponentInParent<MovingEntity>().IsNotLookingAt(entity.gameObject))
+                if (GetComponentInParent<MovingEntity>().IsNotLookingAt(hook.gameObject))
                     continue;
 
-                float distance = Vector2.Distance(transform.position, entity.transform.position);
+                float distance = Vector2.Distance(transform.position, hook.transform.position);
 
                 if (distance < closestEntityDistance)
                 {
                     closestEntityDistance = distance;
-                    closestEntity = entity;
+                    closestEntity = hook;
                 }
 
                 if (_target != closestEntity)
@@ -60,31 +63,26 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Entity entity) == false)
+            if (collision.TryGetComponent(out Hook hook) == false)
                 return;
 
-            if (entity.GetType() == _targetType)
-            {
-                _entitiesInRange.Add(entity);
+                _hooksInRange.Add(hook);
                 UpdateClosestTarget();
-            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Entity entity) == false)
+            if (collision.TryGetComponent(out Hook hook) == false)
                 return;
 
-            if (_entitiesInRange.Contains(entity))
+            if (_hooksInRange.Contains(hook))
             {
-                _entitiesInRange.Remove(entity);
+                _hooksInRange.Remove(hook);
                 UpdateClosestTarget();
             }
         }
-
+        
         private void Start() => UpdateClosestTarget();
-
-        private void Awake() => _targetType = Target.GetType(_targetToFind);
 
         private void OnEnable() => _target = null;
     }

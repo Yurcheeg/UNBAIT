@@ -1,5 +1,5 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition.Abstract;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+using Assets.UNBAIT.Develop.Gameplay.Entities;
 using System.Collections;
 using UnityEngine;
 

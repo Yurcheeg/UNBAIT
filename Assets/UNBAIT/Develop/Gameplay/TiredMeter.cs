@@ -1,4 +1,4 @@
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+using Assets.UNBAIT.Develop.Gameplay.Entities;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +18,6 @@ public class TiredMeter : MonoBehaviour
     [SerializeField] private float _reelingMultiplier;
 
     private Slider _slider;
-
 
     private IEnumerator DrainAfterDelay(float delay)
     {
@@ -50,6 +49,9 @@ public class TiredMeter : MonoBehaviour
     }
     private void Update()
     {
+        if (_fisherman.IsTired)
+            return;
+
         if(_value <= _slider.minValue)
             _fisherman.IsTired = true;
     }

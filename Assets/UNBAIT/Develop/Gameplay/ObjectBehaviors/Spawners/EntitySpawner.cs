@@ -1,4 +1,4 @@
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
+using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 using System.Collections;
 using UnityEngine;
 

@@ -1,16 +1,20 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.Inventory;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision;
+using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
+using Assets.UNBAIT.Develop.Gameplay.Inventory;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
+namespace Assets.UNBAIT.Develop.Gameplay.Entities
 {
     public sealed class Hook : Entity//TODO: put all the logic into desegnated class
     {
-        private Vector3 startPosition;
+        public event System.Action<Entity> Catch;
+
+        private Vector3 _startPosition;
 
         public Entity HookedEntity { get; private set; }
 
         [field: SerializeField] public bool InUse { get; private set; } = false;
+
         public bool HasReturned { get; private set; }
 
         public bool TryHookEntity(Entity entity)
@@ -29,8 +33,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
 
             HookedEntity = entity;
             InUse = true;
-            //hookable.IsHooked = true; //race condition w/ HookOnCollision
-
+            hookable.IsHooked = true;
             return true;
         }
 
@@ -47,14 +50,13 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
         {
             if (HookedEntity != null && (HasReturned || HookedEntity.TryGetComponent<Item>(out _)))
                 Destroy(HookedEntity.gameObject);
-            
         }
 
-        private void Start() => startPosition = transform.position;
+        private void Start() => _startPosition = transform.position;
 
         private void DestroyWhenReturned()
         {
-            if (transform.position.y > startPosition.y)
+            if (transform.position.y > _startPosition.y)
             {
                 HasReturned = true;
                 OnDestroy();//TODO: feels illegal. also doesn't work with hooks being close

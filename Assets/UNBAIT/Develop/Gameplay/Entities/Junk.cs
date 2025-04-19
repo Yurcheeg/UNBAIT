@@ -1,15 +1,17 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
+﻿using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
+using System;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
+namespace Assets.UNBAIT.Develop.Gameplay.Entities
 {
     [RequireComponent(typeof(Collider2D))]
     public sealed class Junk : Entity, IHookable
     {
+        private Collider2D _collider;
+
         public bool IsHooked { get; set; }
         public bool HasReachedGround { get; private set; }
 
-        private Collider2D _collider;
         public void Ground()
         {
             HasReachedGround = true;

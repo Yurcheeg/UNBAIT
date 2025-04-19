@@ -13,8 +13,6 @@ namespace Assets.UNBAIT.Develop.Gameplay
 
             float randomNumber = Random.Range(min, max);
 
-            randomNumber = Mathf.Clamp(randomNumber, min, max);
-
 #if UNITY_EDITOR
             Debug.Log($"Random number is: {randomNumber} ");
 #endif

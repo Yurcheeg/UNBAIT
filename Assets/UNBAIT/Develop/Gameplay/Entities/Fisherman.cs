@@ -1,8 +1,8 @@
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract;
+using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 using System;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
+namespace Assets.UNBAIT.Develop.Gameplay.Entities
 {
     public sealed class Fisherman : Entity
     {
@@ -37,7 +37,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts
                 IsStunned = false;
                 Unstunned?.Invoke();
             });
-
         }
 
         private void Awake() => Animator = GetComponent<Animator>();

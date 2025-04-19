@@ -1,6 +1,4 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
-using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision;
-using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman;
@@ -11,47 +9,35 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish
     {
         private TargetLooker _targetLooker;
 
-        private HookableOnCollision _hookOnCollision;
-
         private MovingEntity _entity;
-
-        public Hook Hook { get; private set; }
+        public Entities.Fish Fish { get; private set; }
 
         public override void StartMovement() => _entity.IsMoving = true;
 
         public override void StopMovement() => _entity.IsMoving = false;
         
-        public void Unhook() => ChangeState(new MovingState<FishFSM>(this));
-        
-        private void OnHooked(Hook hook)
-        {
-            Hook = hook;
-            ChangeState(new HookedState(this));
-        }
+        public void Unhook() => ChangeState(new MovingState(this));
+
+        public void Hook() => ChangeState(new HookedState(this));
 
         private void OnPositionSet()
         {
             if(CurrentState != new HookedState(this))
-            ChangeState(new MovingState<FishFSM>(this));
+            ChangeState(new MovingState(this));
         }
 
-        private void OnDisable()
-        {
-            _targetLooker.PositionSet -= OnPositionSet;
-            _hookOnCollision.Hooked -= OnHooked;
-        }
+        private void OnDestroy() => _targetLooker.PositionSet -= OnPositionSet;
 
         private void Awake()
         {
             _entity = GetComponent<MovingEntity>();
             _targetLooker = GetComponent<TargetLooker>();
-            _hookOnCollision = GetComponent<HookableOnCollision>();
+            Fish = GetComponent<Entities.Fish>();
 
             if (CurrentState == null)
                 ChangeState(new IdleState<FishFSM>(this));
 
             _targetLooker.PositionSet += OnPositionSet;
-            _hookOnCollision.Hooked += OnHooked;
         }
 
     }

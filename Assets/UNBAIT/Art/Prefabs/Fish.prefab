@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 5351249461758789338}
   - component: {fileID: 151803668380670706}
   - component: {fileID: -8148699359598362866}
-  - component: {fileID: 5770513899269978197}
   m_Layer: 0
   m_Name: Fish
   m_TagString: Untagged
@@ -303,18 +302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd90543d705b9c4b93dbce1e30a6fbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5770513899269978197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3648229438992005600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ba229577b069e14491d4b7aa2f9e32a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4010029439215421214
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,8 +448,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a3ed66623a90e41a997bce29151205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetToFind: 1
-  _entitiesInRange: []
+  _hooksInRange: []
+  _fish: {fileID: 3938766259009401615}
 --- !u!58 &1606819536479169793
 CircleCollider2D:
   m_ObjectHideFlags: 0

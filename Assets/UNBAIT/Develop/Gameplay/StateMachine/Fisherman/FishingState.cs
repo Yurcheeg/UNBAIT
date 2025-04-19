@@ -1,56 +1,58 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
+using System;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 {
     public class FishingState : BaseState<FishermanFSM>
     {
+        private bool _isHookThrown;
         public FishingState(FishermanFSM fsm) : base(fsm) { }
 
         public override void Enter()
         {
             base.Enter();
 
-            if (FSM.Hook != null)
-                FSM.Hook.Destroyable.Destroyed -= OnHookDestroyed;
-
-            ThrowHook();
+            TryThrowHook();
         }
 
         public override void Exit()
         {
             base.Exit();
 
-            if (FSM.Hook != null)
-            {
-                FSM.Hook.Destroyable.Destroyed -= OnHookDestroyed;
-                Object.Destroy(FSM.Hook);
-            }
+            DestroyHook();
         }
 
         public override void Update()
         {
             base.Update();
-            if (FSM.Fisherman.IsStunned && FSM.Hook != null)
-                Object.Destroy(FSM.Hook.gameObject);
+            if (FSM.Fisherman.IsStunned)
+                DestroyHook();
+
+            if (_isHookThrown == false && FSM.Fisherman.IsStunned == false)
+                TryThrowHook();
         }
 
-        private void OnHookDestroyed()
+        private void TryThrowHook()
+        {
+            if (_isHookThrown)
+                return;
+
+            if (FSM.Hook != null)
+                return;
+
+            FSM.ThrowHook();
+            _isHookThrown = true;
+        }
+
+        private void DestroyHook()
         {
             if (FSM.Hook != null)
-                FSM.Hook.Destroyable.Destroyed -= OnHookDestroyed;
-
-            ThrowHook();
-        }
-
-        private void ThrowHook()
-        {
-            FSM.ThrowHook();
-
-            CustomCoroutine.Instance.WaitOnConditionThenExecute(
-                () => FSM.Hook != null,
-                () => FSM.Hook.Destroyable.Destroyed += OnHookDestroyed
-                );
+            {
+                UnityEngine.Object.Destroy(FSM.Hook);
+                FSM.Fisherman.Hook = null;
+                _isHookThrown = false;
+            }
         }
     }
 }

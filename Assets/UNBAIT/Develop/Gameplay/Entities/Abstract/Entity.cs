@@ -1,7 +1,7 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.MarkerScripts.Abstract
+namespace Assets.UNBAIT.Develop.Gameplay.Entities.Abstract
 {
     [RequireComponent(typeof(Destroyable))]
     public abstract class Entity : MonoBehaviour

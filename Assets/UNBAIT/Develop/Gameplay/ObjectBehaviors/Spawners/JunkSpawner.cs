@@ -1,4 +1,4 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.MarkerScripts;
+﻿using Assets.UNBAIT.Develop.Gameplay.Entities;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +13,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
             Junk junk = base.Spawn(prefab);
             return junk;
         }
+
         public Junk GetRandom() => _junk[Random.Range(0, _junk.Count)];
 
         [ContextMenu("Spawn Junk")]
