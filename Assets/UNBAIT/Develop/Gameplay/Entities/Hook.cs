@@ -7,7 +7,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
 {
     public sealed class Hook : Entity//TODO: put all the logic into desegnated class
     {
-        public event System.Action<Entity> Catch;
+        public event System.Action<Entity> Caught;
 
         private Vector3 _startPosition;
 
@@ -59,7 +59,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
             if (transform.position.y > _startPosition.y)
             {
                 HasReturned = true;
-                OnDestroy();//TODO: feels illegal. also doesn't work with hooks being close
+                Caught?.Invoke(HookedEntity);
+                Destroy(gameObject);//TODO: feels illegal. also doesn't work with hooks being close
             }
         }
     }

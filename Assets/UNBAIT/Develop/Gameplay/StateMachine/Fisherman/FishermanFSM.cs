@@ -1,5 +1,7 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
+using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition;
 using Assets.UNBAIT.Develop.Gameplay.Entities;
+using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
@@ -24,8 +26,19 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 
         public void ThrowHook() => CustomCoroutine.Instance.WaitOnConditionThenExecute(
             () => Fisherman.IsStunned == false,
-            () => Fisherman.Hook = _hookSpawner.ThrowHook()
-        );
+            () =>
+            {
+                Fisherman.Hook = _hookSpawner.ThrowHook();
+                Hook.Caught += OnCaught;
+            });
+
+        private void OnCaught(Entity entity)
+        {
+            Hook.Caught -= OnCaught;
+            GetComponent<FishCaughtCondition>().OnCaught(entity);
+            if (entity is not Entities.Fish)
+                ThrowHook();
+        }
 
         private void OnPositionSet() => ChangeState(new MovingState(this));
 
