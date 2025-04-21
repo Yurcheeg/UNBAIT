@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/UNBAIT/Scenes/TestScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/UNBAIT/Scenes/Bootstrap.unity
+    guid: 394f513d8a504de45950ad2571d1b22d
+  - enabled: 1
+    path: Assets/UNBAIT/Scenes/MainMenu.unity
+    guid: ff5fce3f2b1242f4c8bbf9f1cb4e2e9d
+  - enabled: 1
+    path: Assets/UNBAIT/Scenes/Gameplay.unity
+    guid: 3212d1de18d94c0428daccbb9af3de70
+  - enabled: 1
+    path: Assets/UNBAIT/Scenes/Tutorial.unity
+    guid: b4b468ccadf58ab408423a2245670af8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

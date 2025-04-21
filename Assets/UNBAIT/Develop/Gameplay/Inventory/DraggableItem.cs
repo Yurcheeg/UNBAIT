@@ -28,7 +28,12 @@ namespace Assets.UNBAIT.Develop.Gameplay.Inventory
             UpdateSprite();
         }
 
-        private void UpdateSprite() => Sprite = CurrentItem != null ? CurrentItem.Sprite : null;
+        private void UpdateSprite()
+        {
+            Sprite = CurrentItem == null ? null : CurrentItem.Sprite;
+
+            _image.color = Sprite == null ? Color.clear : Color.white; 
+        }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -62,6 +67,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.Inventory
             _canvas = GetComponentInParent<Canvas>();
 
             _image = GetComponent<Image>();
+
+            UpdateSprite();
         }
     }
 }

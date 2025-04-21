@@ -4,6 +4,7 @@ using UnityEngine;
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
     [RequireComponent(typeof(Flip))]
+    [RequireComponent(typeof(HitFlash))]
     public sealed class FlipOnClick : MonoBehaviour
     {
         public static event Action Hit;
