@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4144ac867afaba4478782afe2f84ed26, type: 3}
+  m_Name: 2Instruction
+  m_EditorClassIdentifier: 
+  Messages:
+  - Nicely done! Now, lets try and make James face another direction
+  - In order to do that, we need to grab his attention
+  - Try pressing LMB 2 times and then using RMB
+  ObjectsToSpawn: []
+  ObjectSpawningMessageIndex: 0
+  _destroyGameObjectsOnComplete: 1
+  TargetObject: {fileID: 4606048108392027503, guid: 7c7ed6770fb9e244b90c3427a39493fb, type: 3}
+  TriggerType: 1

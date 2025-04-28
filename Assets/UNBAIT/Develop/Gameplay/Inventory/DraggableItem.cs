@@ -1,7 +1,8 @@
+using Assets.UNBAIT.Develop.Gameplay.Entities;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using Cursor = Assets.UNBAIT.Develop.Gameplay.Cursor;
 
 namespace Assets.UNBAIT.Develop.Gameplay.Inventory
 {
@@ -32,12 +33,20 @@ namespace Assets.UNBAIT.Develop.Gameplay.Inventory
         {
             Sprite = CurrentItem == null ? null : CurrentItem.Sprite;
 
-            _image.color = Sprite == null ? Color.clear : Color.white; 
+            _image.color = Sprite == null ? Color.clear : Color.white;
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            _originalParent = transform.parent;
+            var isTutorial = FindAnyObjectByType(typeof(TutorialManager)) != null;//HACK workaround for tutorial
+            if (isTutorial)
+            {
+                print(isTutorial);
+                _originalParent = FindAnyObjectByType(typeof(Hook)).GameObject().transform;
+            }
+            else
+                _originalParent = transform.parent;
+
             transform.SetParent(_canvas.transform);
         }
 

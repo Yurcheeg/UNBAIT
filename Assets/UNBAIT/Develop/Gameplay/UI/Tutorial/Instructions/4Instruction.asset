@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4144ac867afaba4478782afe2f84ed26, type: 3}
+  m_Name: 4Instruction
+  m_EditorClassIdentifier: 
+  Messages:
+  - Now, you can distract fishermen by putting stuff on hooks.
+  - First, try and get the boot into your inventory
+  ObjectsToSpawn: []
+  ObjectSpawningMessageIndex: 0
+  _destroyGameObjectsOnComplete: 1
+  TargetObject: {fileID: 6239666967502502135, guid: bbfd3ec2048f1ab4ebd80a5f1d933d93, type: 3}
+  TriggerType: 2

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.Entities
 {
-    public sealed class Hook : Entity//TODO: put all the logic into desegnated class
+    public sealed class Hook : Entity
     {
         public event System.Action<Entity> Caught;
 
@@ -60,8 +60,15 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
             {
                 HasReturned = true;
                 Caught?.Invoke(HookedEntity);
-                Destroy(gameObject);//TODO: feels illegal. also doesn't work with hooks being close
+                Destroy(gameObject);
             }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            var isTutorial = FindAnyObjectByType(typeof(TutorialManager)) != null;
+            if(isTutorial)
+                InUse = true;
         }
     }
 }

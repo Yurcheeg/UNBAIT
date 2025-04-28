@@ -5,7 +5,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
     public sealed class Flip : MonoBehaviour
     {
-        public static event Action Flipped;
+        public event Action Flipped;
         public Movable Movable { get; private set; }
 
         public void FlipObject()
