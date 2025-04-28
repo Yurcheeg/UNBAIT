@@ -11,10 +11,19 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
 
         private float _timer;
 
+        private bool _movementStopped = true;
+
         private MovingEntity _entity;
+
+        public void StartMovement() => _movementStopped = true;
+
+        public void StopMovement() => _movementStopped = false;
 
         private void Update()
         {
+            if (_movementStopped == false)
+                return;
+        
             _timer -= Time.deltaTime;
 
             if(_entity.IsMoving)

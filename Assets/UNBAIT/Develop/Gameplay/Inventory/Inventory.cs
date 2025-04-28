@@ -64,6 +64,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.Inventory
             rb.bodyType = RigidbodyType2D.Kinematic; // stops items from falling off the inventory
             rb.simulated = false; //stops hitting items when 'travelling'
 
+            if (item.TryGetComponent<JellyfishMovement>(out JellyfishMovement jellyfishMovement))
+                jellyfishMovement.StopMovement();
+
             Vector2 startPosition = item.transform.position;
 
             Vector2 slotPosition = RectTransformUtility.WorldToScreenPoint(null, slot.GetComponent<RectTransform>().position);
@@ -88,6 +91,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.Inventory
             var rb = item.GetComponent<Rigidbody2D>();
             rb.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             rb.simulated = true;
+
+            if (item.TryGetComponent<JellyfishMovement>(out JellyfishMovement jellyfishMovement))
+                jellyfishMovement.StartMovement();
 
             int index = _items.IndexOf(item);
 
