@@ -19,6 +19,8 @@ public class TiredMeter : MonoBehaviour
 
     private Slider _slider;
 
+    public float SliderValue => _value;
+
     private IEnumerator DrainAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);

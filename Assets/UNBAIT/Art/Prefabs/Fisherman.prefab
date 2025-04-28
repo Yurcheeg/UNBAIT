@@ -181,6 +181,7 @@ MonoBehaviour:
   _movementConstrains:
     <MoveX>k__BackingField: 1
     <MoveY>k__BackingField: 0
+  _conditions: []
 --- !u!114 &-8678243031250324516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +350,8 @@ MonoBehaviour:
   _junk:
   - {fileID: 9196095259797638556, guid: 94dc447aecb461f49871018ff3269177, type: 3}
   - {fileID: 2910968819533808219, guid: 8c83d150a689ae64e90a491edf85c996, type: 3}
+  _spawnThreshold: 30
+  _tiredMeter: {fileID: 1777209832663538987}
 --- !u!1 &6485105445091490622
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -771,6 +774,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7067622649293519116, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682029072746036425, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682029072746036425, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8682029072746036425, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
+      propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8807731085358474465, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
