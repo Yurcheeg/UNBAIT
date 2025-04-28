@@ -9,10 +9,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
 
         protected Transform SpawnPoint
         {
-            get
-            {
-                return _spawnPoint != null ? _spawnPoint : transform;
-            }
+            get => _spawnPoint != null ? _spawnPoint : transform;
 
             set => _spawnPoint = value;
         }

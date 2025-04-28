@@ -19,14 +19,20 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 
             CustomCoroutine.Instance.WaitOnConditionThenExecute(
                 () => stateInfo.normalizedTime >= 1f,
-                () => animator.SetBool("IsStunned", true)
-                );
+                () =>
+                {
+                    if (animator != null)
+                        animator.SetBool("IsStunned", true);
+                });
             //TODO: indicate that it's stunned somehow
 
             CustomCoroutine.Instance.WaitOnConditionThenExecute(
                 () => fisherman.IsStunned == false,
-                () => animator.SetBool("IsStunned", false)
-                    );
+                () =>
+                {
+                    if (animator != null)
+                        animator.SetBool("IsStunned", false);
+                });
             //TODO: remove indicator;
 
         }

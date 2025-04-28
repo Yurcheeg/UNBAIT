@@ -1,5 +1,6 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.Entities;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
+using Assets.UNBAIT.Develop.Gameplay.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
 
         private MovingEntity _entity;
 
+        private Fisherman _fisherman;
+
         private bool _spawned;
 
         public Junk GetRandom() => _junk[Random.Range(0, _junk.Count)];
@@ -32,6 +35,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
             if (_entity.IsMoving)
                 return;
 
+            if (_fisherman.IsStunned)
+                return;
+
             if (_tiredMeter.SliderValue > _spawnThreshold)
                 return;
 
@@ -39,6 +45,10 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
             _spawned = true;
         }
 
-        private void Awake() => _entity = GetComponent<MovingEntity>();
+        private void Awake()
+        {
+            _entity = GetComponent<MovingEntity>();
+            _fisherman = GetComponent<Fisherman>();
+        }
     }
 }

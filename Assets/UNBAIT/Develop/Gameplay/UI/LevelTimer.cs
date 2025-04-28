@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +14,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.UI
         [SerializeField] private float _jellyfishThreshold;
         [Space]
         [SerializeField] private Image _menu;
+        [SerializeField] private Button _continueButton;
 
         [SerializeField] private int _waveCount;
         [SerializeField] private int _maxWaveCount;
@@ -22,6 +22,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.UI
         [SerializeField] private TextMeshProUGUI _waveCountText;
 
         private Slider _slider;
+
+        public float SliderValue => _slider.value;
 
         public bool IsPaused => Time.timeScale == 0f;
 
@@ -45,12 +47,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.UI
         private void Update()
         {
             if (IsPaused)
-            {
-                if (Input.GetKeyDown(KeyCode.Space))
-                    Unpause();
-
                 return;
-            }
 
             _slider.value -= Time.deltaTime;
 
@@ -73,6 +70,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.UI
 
             ResetSlider();
             UpdateText();
+
+            _continueButton.onClick.AddListener(Unpause);
         }
     }
 }
