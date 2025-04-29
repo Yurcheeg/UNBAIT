@@ -15,16 +15,22 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Image _image;
         [Space]
-        [SerializeField] Material _material;
+        [SerializeField] private Material _material;
 
+        private Material _originalMaterial;
+        private Coroutine _flashCoroutine;
         private FlipOnClick _flipOnClick;
 
-        private void OnHit() => StartCoroutine(Recolor());
+        private void OnHit()
+        {
+            if (_flashCoroutine != null)
+                StopCoroutine(_flashCoroutine);
+
+            _flashCoroutine = StartCoroutine(Recolor());
+        }
 
         private IEnumerator Recolor()
         {
-            Material originalMaterial = _image != null ? _image.material : _renderer.material;
-
             yield return new WaitForSeconds(_flashDelaySeconds);
 
             if (_image != null)
@@ -35,15 +41,18 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
             yield return new WaitForSeconds(_flashDurationSeconds);
 
             if (_image != null)
-                _image.material = originalMaterial;
+                _image.material = _originalMaterial;
             else
-                _renderer.material = originalMaterial;
+                _renderer.material = _originalMaterial;
+
+            _flashCoroutine = null;
         }
         private void Awake()
         {
             _flipOnClick = GetComponent<FlipOnClick>();
             _flipOnClick.Hit += OnHit;
-            //FlipOnClick.Hit += OnHit;
+
+            _originalMaterial = _image != null ? _image.material : _renderer.material;
         }
 
         private void OnDestroy() => _flipOnClick.Hit -= OnHit;

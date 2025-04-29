@@ -8,6 +8,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
     public class FishCaughtCondition : ReturnCondition    
     {
         public static event Action FishCaught;
+
         public void OnCaught(Entity entity)
         {
             if (entity is Fish)

@@ -88,7 +88,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
                 condition.ConditionMet -= OnConditionMet;
             }
         }
-
+        //TODO reconsider the offset maths
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (TryGetComponent<Fisherman>(out _) == false)

@@ -35,9 +35,11 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         private void OnCaught(Entity entity)
         {
             Hook.Caught -= OnCaught;
-            GetComponent<FishCaughtCondition>().OnCaught(entity);
+            GetComponent<FishCaughtCondition>().OnCaught(entity);//HACK? TODO? what? why did i do that?
             if (entity is not Entities.Fish)
-                ThrowHook();
+            {
+                CustomCoroutine.Instance.WaitThenExecute(Fisherman.ThrowDelay, ThrowHook);
+            }
         }
 
         private void OnPositionSet() => ChangeState(new MovingState(this));
