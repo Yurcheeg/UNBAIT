@@ -3,31 +3,32 @@ using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
 {
-    [RequireComponent(typeof(StopOnRandomPoint))]
+    [RequireComponent(typeof(MovementController))]
     public class DestinationMover : MonoBehaviour
     {
-        private StopOnRandomPoint _randomAxisMover;
-        private MovingEntity _baseEntity;
+        private MovementController _movementController;
+        private MovingEntity _entity;
 
-        private void OnPositionSet() => _baseEntity.IsMoving = true;
+        private void OnPositionSet() => _entity.IsMoving = true;
 
-        private void OnPositionReached() => _baseEntity.IsMoving = false;
-        
-        private void OnEnable() => _randomAxisMover.PositionReached += OnPositionReached;
+        private void OnPositionReached() => _entity.IsMoving = false;
+
+        private void OnEnable()
+        {
+            _movementController.PositionReached += OnPositionReached;
+            _movementController.PositionSet += OnPositionSet;
+        }
 
         private void OnDisable()
         {
-            _randomAxisMover.PositionReached -= OnPositionReached;
-
-            _randomAxisMover.PositionSet += OnPositionSet;
+            _movementController.PositionReached -= OnPositionReached;
+            _movementController.PositionSet -= OnPositionSet;
         }
         
         private void Awake()
         {
-            _randomAxisMover = GetComponent<StopOnRandomPoint>();
-            _baseEntity = GetComponent<MovingEntity>();
-
-            _randomAxisMover.PositionSet += OnPositionSet;
+            _movementController = GetComponent<MovementController>();
+            _entity = GetComponent<MovingEntity>();
         }
 
     }

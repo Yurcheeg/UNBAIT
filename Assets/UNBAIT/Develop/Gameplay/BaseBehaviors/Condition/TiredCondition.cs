@@ -9,9 +9,11 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
     {
         private Fisherman _fisherman;
 
-        public IEnumerator WaitUntilTired()
+        public IEnumerator WaitUntilTiredAndHookReturned()
         {
             yield return new WaitUntil(() => _fisherman.IsTired);
+
+            yield return new WaitUntil(() => _fisherman.Hook == null);
 
             MeetCondition();
         }
@@ -20,7 +22,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
         {
             _fisherman = GetComponent<Fisherman>();
 
-            StartCoroutine(WaitUntilTired());
+            StartCoroutine(WaitUntilTiredAndHookReturned());
         }
     }
 }

@@ -9,7 +9,7 @@ using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
 {
-    public class TargetLooker : MonoBehaviour, IDestinationSetter
+    public class TargetLooker : MonoBehaviour
     {
         public event Action PositionSet;
 

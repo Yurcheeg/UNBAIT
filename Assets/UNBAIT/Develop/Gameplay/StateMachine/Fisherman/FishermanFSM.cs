@@ -12,9 +12,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
     {
         private MovingEntity _entity;
 
-        private StopOnRandomPoint _stopOnRandomPoint;
-
         private HookSpawner _hookSpawner;
+
+        private MovementController _movementController;
 
         public Entities.Fisherman Fisherman { get; private set; }
 
@@ -51,15 +51,15 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         private void Awake()
         {
             _entity = GetComponent<MovingEntity>();
-            _stopOnRandomPoint = GetComponent<StopOnRandomPoint>();
+            _movementController = GetComponent<MovementController>();
             _hookSpawner = GetComponent<HookSpawner>();
             Fisherman = GetComponent<Entities.Fisherman>();
 
             Fisherman.Stunned += OnStunned;
             Fisherman.Unstunned += OnUnstunned;
 
-            _stopOnRandomPoint.PositionSet += OnPositionSet;
-            _stopOnRandomPoint.PositionReached += OnPositionReached;
+            _movementController.PositionSet += OnPositionSet;
+            _movementController.PositionReached += OnPositionReached;
 
             ChangeState(new IdleState<FishermanFSM>(this));
 
@@ -74,8 +74,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             Fisherman.Stunned -= OnStunned;
             Fisherman.Unstunned -= OnUnstunned;
 
-            _stopOnRandomPoint.PositionSet -= OnPositionSet;
-            _stopOnRandomPoint.PositionReached -= OnPositionReached;
+            _movementController.PositionSet -= OnPositionSet;
+            _movementController.PositionReached -= OnPositionReached;
         }
     }
 }

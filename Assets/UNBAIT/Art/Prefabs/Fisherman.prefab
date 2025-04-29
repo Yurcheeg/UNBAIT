@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 803972462205294899}
   - component: {fileID: 6999661230614612999}
   - component: {fileID: 1390394245472758664}
-  - component: {fileID: 7286281410214602080}
   - component: {fileID: -8678243031250324516}
   - component: {fileID: 7997119192048701050}
   - component: {fileID: 5678737423679480335}
@@ -24,6 +23,9 @@ GameObject:
   - component: {fileID: 5360519507167078813}
   - component: {fileID: 968439989409488322}
   - component: {fileID: 8193312990867124347}
+  - component: {fileID: 1548174558600711779}
+  - component: {fileID: 7447070070147598463}
+  - component: {fileID: 8951273896772876327}
   m_Layer: 0
   m_Name: Fisherman
   m_TagString: Untagged
@@ -163,25 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _direction: {x: 0, y: 0}
---- !u!114 &7286281410214602080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2406229563526606959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6527565672faac5448b0d0c0bc523359, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _startPositionValue: -4
-  _endPositionValue: 4
-  _moveBackDelaySeconds: 0.5
-  _movementConstrains:
-    <MoveX>k__BackingField: 1
-    <MoveY>k__BackingField: 0
-  _conditions: []
 --- !u!114 &-8678243031250324516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +335,47 @@ MonoBehaviour:
   - {fileID: 2910968819533808219, guid: 8c83d150a689ae64e90a491edf85c996, type: 3}
   _spawnThreshold: 30
   _tiredMeter: {fileID: 1777209832663538987}
+--- !u!114 &1548174558600711779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406229563526606959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d793204cf8d3dcc4db8987d72551fba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reachOffset: 1
+  _movementAxis: 0
+--- !u!114 &7447070070147598463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406229563526606959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d86832121411d94cbfb97620ad767f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startRange: -4
+  _endRange: 4
+--- !u!114 &8951273896772876327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2406229563526606959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace29a9728851424985dd072bef7691a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _returnDelaySeconds: 0.5
 --- !u!1 &6485105445091490622
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,7 +654,7 @@ MonoBehaviour:
   _value: 0
   _minimumValue: 0
   _maximumValue: 60
-  _drainSpeed: 1
+  _drainSpeed: 2
   _drainRate: 5
   _reelingMultiplier: 3
 --- !u!1 &8193994337480793562
@@ -734,7 +758,7 @@ PrefabInstance:
       objectReference: {fileID: -8678243031250324516}
     - target: {fileID: 4712902400818674807, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
       propertyPath: _drainSpeed
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4712902400818674807, guid: c3ee098cd631d18458d257ab7053f39a, type: 3}
       propertyPath: _maximumValue
