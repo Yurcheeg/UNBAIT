@@ -37,17 +37,17 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
             {
                 if (LevelTimer.IsPaused)
                     yield return null;
-
-                if (IsDisabled)
+                else if (IsDisabled)
                     yield return null;
-
-                if (SpawnLimitReached)
+                else if (SpawnLimitReached)
                     yield return null;
+                else
+                {
+                    yield return new WaitForSeconds(_spawnDelay);
 
-                yield return new WaitForSeconds(_spawnDelay);
-
-                Spawn();
-                _count++;
+                    Spawn();
+                    _count++;
+                }
             }
         }
     }

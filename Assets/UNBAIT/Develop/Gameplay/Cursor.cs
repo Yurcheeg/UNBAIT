@@ -24,7 +24,7 @@ namespace Assets.UNBAIT.Develop.Gameplay
 
         public static bool IsMouseOverUI(GameObject target)
         {
-            PointerEventData pointerData = new PointerEventData(EventSystem.current)
+            PointerEventData pointerData = new(EventSystem.current)
             {
                 position = Input.mousePosition
             };

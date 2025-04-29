@@ -25,7 +25,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 
         public override void Update()
         {
-            base.Update();
             if (FSM.Fisherman.IsStunned)
                 DestroyHook();
 
@@ -49,7 +48,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         {
             if (FSM.Hook != null)
             {
-                UnityEngine.Object.Destroy(FSM.Hook);
+                UnityEngine.Object.Destroy(FSM.Hook.gameObject);
                 FSM.Fisherman.Hook = null;
                 _isHookThrown = false;
             }
