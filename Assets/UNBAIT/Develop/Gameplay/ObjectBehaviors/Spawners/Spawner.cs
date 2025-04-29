@@ -14,6 +14,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
             set => _spawnPoint = value;
         }
 
-        public virtual T Spawn(T prefab) => Instantiate(prefab, SpawnPoint.position, Quaternion.identity);
+        //null check to negate the MissingReferenceError from CustomCoroutine in TryThrowHook
+        public virtual T Spawn(T prefab) => this == null ? null : Instantiate(prefab, SpawnPoint.position, Quaternion.identity);
     }
 }

@@ -24,12 +24,32 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
         public override Entity Spawn(Entity prefab)
         {
             Entity entity = base.Spawn(prefab);
-            entity.Destroyable.Destroyed += OnDestroyed;
+
+            if (entity != null)
+            {
+                //subscribes to local OnEntityDestroyed on next Update,
+                //so that Awake in entity that assigns the Destroyable finishes.
+                CustomCoroutine.Instance.WaitThenExecute(-1,
+                    () =>
+                    {
+                        if (entity == null)
+                            return;
+                        if (entity.Destroyable == null)
+                            return;
+
+                        //The local method safely unsubscribes to avoid leaks.
+                        void OnEntityDestroyed()
+                        {
+                            entity.Destroyable.Destroyed -= OnEntityDestroyed;
+                            _count--;
+                        }
+
+                        entity.Destroyable.Destroyed += OnEntityDestroyed;
+                    });
+            }
 
             return entity;
         }
-
-        private void OnDestroyed() => _count--;
 
         private IEnumerator Start()
         {

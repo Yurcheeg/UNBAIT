@@ -25,7 +25,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         public override void StopMovement() => _entity.IsMoving = false;
 
         public void ThrowHook() => CustomCoroutine.Instance.WaitOnConditionThenExecute(
-            () => Fisherman.IsStunned == false,
+            () => Fisherman != null && Fisherman.IsStunned == false,
             () =>
             {
                 Fisherman.Hook = _hookSpawner.ThrowHook();
@@ -35,7 +35,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         private void OnCaught(Entity entity)
         {
             Hook.Caught -= OnCaught;
-            GetComponent<FishCaughtCondition>().OnCaught(entity);//HACK? TODO? what? why did i do that?
+            GetComponent<FishCaughtCondition>().OnCaught(entity);//HACK it shouldn't call the random OnCaught method
             if (entity is not Entities.Fish)
             {
                 CustomCoroutine.Instance.WaitThenExecute(Fisherman.ThrowDelay, ThrowHook);
@@ -46,7 +46,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 
         private void OnPositionReached() => ChangeState(new FishingState(this));
 
-        private void Update() => CurrentState?.Update();
 
         private void Awake()
         {
@@ -55,21 +54,23 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             _hookSpawner = GetComponent<HookSpawner>();
             Fisherman = GetComponent<Entities.Fisherman>();
 
-            Fisherman.Stunned += OnStunned;
-            Fisherman.Unstunned += OnUnstunned;
-
-            _movementController.PositionSet += OnPositionSet;
-            _movementController.PositionReached += OnPositionReached;
-
             ChangeState(new IdleState<FishermanFSM>(this));
-
         }
 
         private void OnStunned() => ChangeState(new StunState(this));
 
         private void OnUnstunned() => ChangeState(new FishingState(this));
 
-        private void OnDestroy()
+        private void OnEnable()
+        {
+            Fisherman.Stunned += OnStunned;
+            Fisherman.Unstunned += OnUnstunned;
+
+            _movementController.PositionSet += OnPositionSet;
+            _movementController.PositionReached += OnPositionReached;
+        }
+
+        private void OnDisable()
         {
             Fisherman.Stunned -= OnStunned;
             Fisherman.Unstunned -= OnUnstunned;
@@ -77,5 +78,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             _movementController.PositionSet -= OnPositionSet;
             _movementController.PositionReached -= OnPositionReached;
         }
+        private void Update() => CurrentState?.Update();
     }
 }
