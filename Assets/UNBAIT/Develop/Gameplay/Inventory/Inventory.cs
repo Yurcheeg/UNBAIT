@@ -40,13 +40,10 @@ namespace Assets.UNBAIT.Develop.Gameplay.Inventory
                 }
 
                 if (item.TryGetComponent<Junk>(out Junk junk))//HACK
-                {
                     junk.Ground();
-                }
 
                 StartCoroutine(LerpItem(item, _itemSlot[index]));
 
-                //item.transform.position = _itemSlot[index].transform.position;//HACK: xd
                 _itemSlot[index].SetItem(item);
                 item.IsInInventory = true;
 

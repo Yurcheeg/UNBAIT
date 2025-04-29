@@ -1,5 +1,4 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 

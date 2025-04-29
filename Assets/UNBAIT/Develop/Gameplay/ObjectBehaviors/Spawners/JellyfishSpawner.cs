@@ -14,7 +14,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
 
         [SerializeField] private float _threshold;
 
-        [Range(0f,1f)]
+        [Range(0f, 1f)]
         [SerializeField] private float _spawnChance;
         [SerializeField] private float _delayBetweenSpawnAttempts;
 
@@ -24,10 +24,11 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
 
         private IEnumerator WaitThenSpawn()
         {
-            yield return new WaitUntil(() => _levelTimer.SliderValue <= _threshold);
 
-            while(true)
+            while (true)
             {
+                yield return new WaitUntil(() => _levelTimer.SliderValue <= _threshold);
+                
                 if (TrySpawn())
                     break;
 
@@ -37,7 +38,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
 
         private bool TrySpawn()
         {
-            if (_levelTimer.IsPaused)
+            if (LevelTimer.IsPaused)
                 return false;
 
             if (UnityEngine.Random.Range(0f, 1f) <= _spawnChance)

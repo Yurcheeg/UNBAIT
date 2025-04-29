@@ -1,4 +1,5 @@
 using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
+using Assets.UNBAIT.Develop.Gameplay.UI;
 using System.Collections;
 using UnityEngine;
 
@@ -30,22 +31,24 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
 
         private void OnDestroyed() => _count--;
 
-        //TODO: Replace test implementation of spawning logic
         private IEnumerator Start()
         {
-            if (IsDisabled)
-                yield break;
+            while (true)
+            {
+                if (LevelTimer.IsPaused)
+                    yield return null;
 
-            if (SpawnLimitReached)
-                yield break;
+                if (IsDisabled)
+                    yield return null;
 
-            yield return new WaitForSeconds(_spawnDelay);
-            Spawn(_entityToSpawn);
+                if (SpawnLimitReached)
+                    yield return null;
 
-            _count++;
+                yield return new WaitForSeconds(_spawnDelay);
 
-            yield return Start();
+                Spawn();
+                _count++;
+            }
         }
-
     }
 }
