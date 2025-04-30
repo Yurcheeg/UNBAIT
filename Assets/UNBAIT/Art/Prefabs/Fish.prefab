@@ -89,12 +89,12 @@ GameObject:
   - component: {fileID: 2268995888033901844}
   - component: {fileID: 2431757470373632031}
   - component: {fileID: -901592879704616750}
-  - component: {fileID: 7873087526958399373}
+  - component: {fileID: 4267724306403405774}
+  - component: {fileID: 8649648471588598849}
   - component: {fileID: -8491190572360747286}
   - component: {fileID: 5555407010324782600}
   - component: {fileID: 3938766259009401615}
   - component: {fileID: 7674999771146833809}
-  - component: {fileID: 5351249461758789338}
   - component: {fileID: 151803668380670706}
   - component: {fileID: -8148699359598362866}
   - component: {fileID: 640532739786519450}
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hitCountToFlip: 2
   _currentHitCount: 0
---- !u!114 &7873087526958399373
+--- !u!114 &4267724306403405774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,12 +289,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 3648229438992005600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f9e5ed26194ab5408997dfafaff134d, type: 3}
+  m_Script: {fileID: 11500000, guid: e9e5c5fded26b39418ddf3d3c69da9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _findTargetOnCollision: {fileID: 5562923593463191829}
-  _borders: []
-  _target: {fileID: 0}
+  _borderPositions: []
+--- !u!114 &8649648471588598849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3648229438992005600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 212be4adcca71ed459f1aac1ae0ae7e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _findHookOnCollision: {fileID: 5562923593463191829}
 --- !u!114 &-8491190572360747286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,18 +353,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44e94956b4123e24c81da4ca167269df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5351249461758789338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3648229438992005600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28bf1f882ae6fcd438b918e3604dba54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &151803668380670706
@@ -660,8 +659,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a3ed66623a90e41a997bce29151205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hooksInRange: []
   _fish: {fileID: 3938766259009401615}
+  _targetTracker: {fileID: 8649648471588598849}
+  _flip: {fileID: 7674999771146833809}
+  _updateInterval: 0.3
 --- !u!58 &1606819536479169793
 CircleCollider2D:
   m_ObjectHideFlags: 0

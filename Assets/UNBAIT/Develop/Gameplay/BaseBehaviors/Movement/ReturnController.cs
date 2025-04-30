@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement
 {
     public class ReturnController : MonoBehaviour
     {

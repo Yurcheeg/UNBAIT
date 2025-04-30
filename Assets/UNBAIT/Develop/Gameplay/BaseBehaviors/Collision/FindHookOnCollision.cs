@@ -1,38 +1,63 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
-using Assets.UNBAIT.Develop.Gameplay.Entities;
-using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
-using System;
+﻿using Assets.UNBAIT.Develop.Gameplay.Entities;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement;
+using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.FishFlip;
+using System;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
 {
     [RequireComponent(typeof(CircleCollider2D))]
     public sealed class FindHookOnCollision : MonoBehaviour
     {
-        public event Action<Entity> TargetFound;
-
         private Hook _target = null;
-
-        [SerializeField] private List<Hook> _hooksInRange = new();
+        [SerializeField] private HashSet<Hook> _hooksInRange = new();
 
         [SerializeField] private Fish _fish;
-        
+        [SerializeField] private TargetTracker _targetTracker;
+
+        [SerializeField] private float _updateInterval = 0.3f;
+        private float _timer;
+        private Flip _flip;
+
+        public Movable Movable => _fish.Movable;
+
         private void UpdateClosestTarget()
         {
             if (_fish.IsHooked)
                 return;
 
             if (_hooksInRange.Count == 0)
-            {
-                _target = null;
+                return;
 
-                TargetFound?.Invoke(_target);
+            Hook closestEntity = GetClosestTargetInDirection();
+
+            if (closestEntity == null)
+            {
+                ClearTarget();
                 return;
             }
 
-            float closestEntityDistance = float.MaxValue;
-            Hook closestEntity = null;
+            if (ShouldUpdateTarget(closestEntity))
+            {
+                _target = closestEntity;
+                _targetTracker.SetTarget(_target);
+            }
+        }
+
+        private void ClearTarget()
+        {
+            if (_target == null)
+                return;
+
+            _target = null;
+            _targetTracker.ClearTarget();
+        }
+
+        private Hook GetClosestTargetInDirection()
+        {
+            float closestDistance = float.MaxValue;
+            Hook closestHook = null;
 
             foreach (Hook hook in _hooksInRange)
             {
@@ -42,23 +67,47 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
                 if (hook.InUse)
                     continue;
 
-                //TODO: replace after replacing the method
-                if (GetComponentInParent<MovingEntity>().IsNotLookingAt(hook.gameObject))
+                if (_fish.transform.IsFacing(hook.transform, Movable.Direction) == false)
                     continue;
 
                 float distance = Vector2.Distance(transform.position, hook.transform.position);
 
-                if (distance < closestEntityDistance)
+                if (distance < closestDistance)
                 {
-                    closestEntityDistance = distance;
-                    closestEntity = hook;
+                    closestDistance = distance;
+                    closestHook = hook;
                 }
-
-                if (_target != closestEntity)
-                    _target = closestEntity;
             }
 
-            TargetFound?.Invoke(_target);
+            return closestHook;
+        }
+
+        private bool ShouldUpdateTarget(Hook closestEntity)
+        {
+            if (closestEntity == null)
+                return false;
+
+            if (_fish.transform.IsFacing(closestEntity.transform, Movable.Direction) == false)
+                return false;
+
+            if (_target != closestEntity)
+                return true;
+
+            if (_fish.transform.IsFacing(_target.transform, Movable.Direction) == false)
+                return true;
+
+            return false;
+        }
+
+        private void Update()
+        {
+            _timer += Time.deltaTime;
+
+            if (_timer >= _updateInterval)
+            {
+                _timer = 0f;
+                UpdateClosestTarget();
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -66,7 +115,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
             if (collision.TryGetComponent(out Hook hook) == false)
                 return;
 
-                _hooksInRange.Add(hook);
+            if (_hooksInRange.Add(hook))
                 UpdateClosestTarget();
         }
 
@@ -75,15 +124,41 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
             if (collision.TryGetComponent(out Hook hook) == false)
                 return;
 
-            if (_hooksInRange.Contains(hook))
+            if (_hooksInRange.Remove(hook))
             {
-                _hooksInRange.Remove(hook);
-                UpdateClosestTarget();
+                if (_target == hook)
+                    ClearTarget();
             }
+            UpdateClosestTarget();
         }
-        
-        private void Start() => UpdateClosestTarget();
 
-        private void OnEnable() => _target = null;
+        private void Start()
+        {
+            _flip = _fish.GetComponent<Flip>();
+
+            UpdateClosestTarget();
+        }
+
+        private void OnEnable()
+        {
+            if(_fish.TryGetComponent<Flip>(out Flip flip))
+            {
+                _flip = flip;
+                _flip.Flipped += OnFlipped;
+            }
+
+            _target = null;
+        }
+
+        private void OnDestroy() => _flip.Flipped -= OnFlipped;
+
+        private void OnFlipped()
+        {
+            if (_target == null)
+                return;
+
+            if (_fish.transform.IsFacing(_target.transform, Movable.Direction) == false)
+                ClearTarget();
+        }
     }
 }

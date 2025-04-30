@@ -1,5 +1,6 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.Entities;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,8 +13,11 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition
         public IEnumerator WaitUntilTiredAndHookReturned()
         {
             yield return new WaitUntil(() => _fisherman.IsTired);
-
-            yield return new WaitUntil(() => _fisherman.Hook == null);
+            if (_fisherman.Hook != null && _fisherman.Hook.TryGetComponent<TriggerCondition>(out TriggerCondition condition))
+            {
+                condition.Trigger();
+                yield return new WaitUntil(() => _fisherman.Hook == null);
+            }
 
             MeetCondition();
         }

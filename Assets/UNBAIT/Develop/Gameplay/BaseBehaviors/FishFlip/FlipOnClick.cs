@@ -1,8 +1,9 @@
+using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.VFX;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.FishFlip
 {
     [RequireComponent(typeof(Flip))]
     [RequireComponent(typeof(HitFlash))]

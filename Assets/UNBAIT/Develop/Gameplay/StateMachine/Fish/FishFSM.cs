@@ -1,4 +1,4 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman;
@@ -7,9 +7,10 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish
 {
     public class FishFSM : BaseFSM<FishFSM>
     {
-        private TargetLooker _targetLooker;
+        private DirectionChooser _directionChooser;
 
         private MovingEntity _entity;
+
         public Entities.Fish Fish { get; private set; }
 
         public override void StartMovement() => _entity.IsMoving = true;
@@ -20,25 +21,24 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fish
 
         public void Hook() => ChangeState(new HookedState(this));
 
-        private void OnPositionSet()
+        private void OnDirectionSet()
         {
             if(CurrentState != new HookedState(this))
             ChangeState(new MovingState(this));
         }
 
-        private void OnDestroy() => _targetLooker.PositionSet -= OnPositionSet;
+        private void OnDestroy() => _directionChooser.DirectionSet -= OnDirectionSet;
 
         private void Awake()
         {
             _entity = GetComponent<MovingEntity>();
-            _targetLooker = GetComponent<TargetLooker>();
+            _directionChooser = GetComponent<DirectionChooser>();
             Fish = GetComponent<Entities.Fish>();
 
             if (CurrentState == null)
                 ChangeState(new IdleState<FishFSM>(this));
 
-            _targetLooker.PositionSet += OnPositionSet;
+            _directionChooser.DirectionSet += OnDirectionSet;
         }
-
     }
 }

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement;
+using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Rotation
 {
     [RequireComponent(typeof(Movable))]
     public class RotateOnChangedDirection : MonoBehaviour

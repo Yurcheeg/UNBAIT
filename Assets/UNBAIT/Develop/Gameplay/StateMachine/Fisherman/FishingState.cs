@@ -1,6 +1,4 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
-using System;
-using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
 {
@@ -9,19 +7,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         private bool _isHookThrown;
         public FishingState(FishermanFSM fsm) : base(fsm) { }
 
-        public override void Enter()
-        {
-            base.Enter();
+        public override void Enter() => TryThrowHook();
 
-            TryThrowHook();
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
-
-            DestroyHook();
-        }
+        public override void Exit() => DestroyHook();
 
         public override void Update()
         {

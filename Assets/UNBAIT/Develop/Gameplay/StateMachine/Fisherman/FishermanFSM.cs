@@ -1,5 +1,5 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
-using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Condition;
+using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement;
 using Assets.UNBAIT.Develop.Gameplay.Entities;
 using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
@@ -28,8 +28,11 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             () => Fisherman != null && Fisherman.IsStunned == false,
             () =>
             {
-                Fisherman.Hook = _hookSpawner.ThrowHook();
-                Hook.Caught += OnCaught;
+                if (Fisherman != null)//checked again because of async callback
+                {
+                    Fisherman.Hook = _hookSpawner.ThrowHook();
+                    Hook.Caught += OnCaught;
+                }
             });
 
         private void OnCaught(Entity entity)

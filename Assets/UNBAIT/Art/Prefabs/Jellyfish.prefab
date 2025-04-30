@@ -20,7 +20,6 @@ GameObject:
   - component: {fileID: 8350706771552430091}
   - component: {fileID: -4070309402105631404}
   - component: {fileID: 463839914756871757}
-  - component: {fileID: 2096978774742872387}
   m_Layer: 0
   m_Name: Jellyfish
   m_TagString: Untagged
@@ -220,7 +219,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2635b6675283444a94997b9c3cf0343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetToFind: 4
 --- !u!114 &9075022673011857147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,18 +270,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7093356be6392aa4f8ef6e36b7d4b409, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2096978774742872387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3216428364302264539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28bf1f882ae6fcd438b918e3604dba54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5720665673723166511

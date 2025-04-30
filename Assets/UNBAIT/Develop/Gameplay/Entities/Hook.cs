@@ -1,8 +1,6 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
-using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement;
 using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.Inventory;
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -51,7 +49,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
 
         private void OnPositionReached()
         {
-            if(InUse | HookedEntity != null)
+            if (InUse && HookedEntity != null)
             {
                 HasReturned = true;
                 Caught?.Invoke(HookedEntity);

@@ -221,8 +221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 0}
   _entityToSpawn: {fileID: 3938766259009401615, guid: 7370effb3fd92d8448429b99f8640894, type: 3}
-  _spawnDelay: 3
-  _spawnLimit: 3
+  _spawnDelay: 5
+  _spawnLimit: 2
 --- !u!1 &43101562
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement
 {
     public sealed class Movable : MonoBehaviour
     {

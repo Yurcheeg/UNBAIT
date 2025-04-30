@@ -1,4 +1,4 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.FishFlip;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay

@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement;
+using System;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.FishFlip
 {
     public sealed class Flip : MonoBehaviour
     {

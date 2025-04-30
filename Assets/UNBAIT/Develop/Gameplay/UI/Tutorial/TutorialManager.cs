@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cursor = Assets.UNBAIT.Develop.Gameplay.Cursor;
 using UnityEngine.SceneManagement;
-using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
 using Assets.UNBAIT.Develop.Gameplay.Entities;
 using Assets.UNBAIT.Develop.Gameplay.Inventory;
+using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.FishFlip;
 
 public class TutorialManager : MonoBehaviour
 {

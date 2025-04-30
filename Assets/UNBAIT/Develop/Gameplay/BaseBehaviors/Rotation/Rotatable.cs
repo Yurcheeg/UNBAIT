@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Rotation
 {
     public sealed class Rotatable : MonoBehaviour
     {
