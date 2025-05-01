@@ -14,12 +14,17 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
         public override void Enter()
         {
             _animator = FSM.Fisherman.Animator;
-            AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
             _animator.SetTrigger(_shockTrigger);
 
             CustomCoroutine.Instance.WaitOnConditionThenExecute(
-                () => stateInfo.normalizedTime >= 1f,
-                () => _animator.SetBool(_stunBool, true) //TODO ADD ANIMATION FOR STUN
+                () =>
+                {
+                    AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+
+                    return stateInfo.IsName("Fisherman-Shock")
+                    && stateInfo.normalizedTime >= 1f;
+                },
+                () => _animator.SetBool(_stunBool, true)
                 );
         }
 

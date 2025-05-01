@@ -40,9 +40,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             Hook.Caught -= OnCaught;
             GetComponent<FishCaughtCondition>().OnCaught(entity);//HACK it shouldn't call the random OnCaught method
             if (entity is not Entities.Fish)
-            {
                 CustomCoroutine.Instance.WaitThenExecute(Fisherman.ThrowDelay, ThrowHook);
-            }
         }
 
         private void OnPositionSet() => ChangeState(new MovingState(this));

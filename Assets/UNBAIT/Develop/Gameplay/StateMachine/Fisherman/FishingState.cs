@@ -28,7 +28,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman
             if (FSM.Hook != null)
                 return;
 
-            FSM.ThrowHook();
+            CustomCoroutine.Instance.WaitThenExecute(FSM.Fisherman.ThrowDelay, FSM.ThrowHook);
             _isHookThrown = true;
         }
 

@@ -178,8 +178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsTired>k__BackingField: 0
   <IsStunned>k__BackingField: 0
-  <StunDuration>k__BackingField: 3
-  <ThrowDelay>k__BackingField: 1
+  <StunDuration>k__BackingField: 4
+  <ThrowDelay>k__BackingField: 2
 --- !u!114 &7997119192048701050
 MonoBehaviour:
   m_ObjectHideFlags: 0
