@@ -6,6 +6,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
 {
     public sealed class Fisherman : Entity
     {
+        public static Action Shocked;
+
         public event Action Stunned;
         public event Action Unstunned;
 
@@ -31,7 +33,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
 
             IsStunned = true;
             Stunned?.Invoke();
-
+            Shocked?.Invoke();
             CustomCoroutine.Instance.WaitThenExecute(StunDuration, () =>
             {
                 IsStunned = false;

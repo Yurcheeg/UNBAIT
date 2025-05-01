@@ -1,8 +1,9 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.Entities;
+using Assets.UNBAIT.Develop.Gameplay.Spawners.Abstract;
 using System;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
+namespace Assets.UNBAIT.Develop.Gameplay.Spawners
 {
     public class HookSpawner : Spawner<Hook>
     {

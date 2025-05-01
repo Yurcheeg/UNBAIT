@@ -2,8 +2,7 @@
 using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement;
 using Assets.UNBAIT.Develop.Gameplay.Entities;
 using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
-using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
-using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners;
+using Assets.UNBAIT.Develop.Gameplay.Spawners;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
 
 namespace Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman

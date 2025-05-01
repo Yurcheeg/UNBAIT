@@ -1,5 +1,4 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement;
-using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.StateMachine.Fisherman;
 

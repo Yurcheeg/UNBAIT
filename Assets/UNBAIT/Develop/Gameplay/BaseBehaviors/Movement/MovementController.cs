@@ -1,5 +1,4 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement

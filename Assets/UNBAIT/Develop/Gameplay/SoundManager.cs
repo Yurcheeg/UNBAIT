@@ -1,12 +1,13 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.FishFlip;
+using Assets.UNBAIT.Develop.Gameplay.Entities;
 using UnityEngine;
 
 namespace Assets.UNBAIT.Develop.Gameplay
 {
     public class SoundManager : MonoBehaviour
     {
-        [SerializeField] private float _minPitch = -5f;
-        [SerializeField] private float _maxPitch = 5f;
+        [SerializeField] private float _minPitch;
+        [SerializeField] private float _maxPitch;
         [SerializeField] private AudioSource sfxSource;
         [Space]
         [Header("Fish SFX")]
@@ -34,6 +35,8 @@ namespace Assets.UNBAIT.Develop.Gameplay
 
             Inventory.Inventory.ItemPicked += OnItemPicked;
             Inventory.Inventory.ItemUsed += OnItemUsed;
+
+            Fisherman.Shocked += OnShocked;
         }
 
         private void OnDestroy()
@@ -55,13 +58,25 @@ namespace Assets.UNBAIT.Develop.Gameplay
 
         private void OnItemPicked() => PlaySoundEffect(_itemPicked);
         #endregion
-       
-        //Fisherman.OnStunned
 
-        private void PlaySoundEffect(AudioClip source)
+        #region Fisherman SFX
+        private void OnShocked() => PlaySoundEffect(_fishermanStunned, changePitch: false);
+        #endregion
+
+
+        private void PlaySoundEffect(AudioClip source, bool changePitch = true)
         {
-            sfxSource.pitch = Random.Range(_minPitch, _maxPitch);
-            sfxSource.PlayOneShot(source);
+            if (changePitch)
+            {
+                float originalPitch = sfxSource.pitch;
+                sfxSource.pitch = Random.Range(_minPitch, _maxPitch);
+
+                sfxSource.PlayOneShot(source);
+
+                sfxSource.pitch = originalPitch;
+            }
+            else
+                sfxSource.PlayOneShot(source);
         }
     }
 }

@@ -1282,7 +1282,7 @@ MonoBehaviour:
   _fishFlipped: {fileID: 8300000, guid: c1aa5a3039696894bb745b88e1ef345c, type: 3}
   _itemPicked: {fileID: 8300000, guid: 148e31bdf16f35043b102c789ab81069, type: 3}
   _itemUsed: {fileID: 8300000, guid: b8107d2401c760c4285def317c319189, type: 3}
-  _fishermanStunned: {fileID: 0}
+  _fishermanStunned: {fileID: 8300000, guid: 62a2dd0b74008054984510e195b3715e, type: 3}
 --- !u!4 &518293585
 Transform:
   m_ObjectHideFlags: 0

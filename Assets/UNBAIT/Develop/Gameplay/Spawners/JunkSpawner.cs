@@ -1,10 +1,11 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.Entities;
-using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement;
+using Assets.UNBAIT.Develop.Gameplay.Entities;
+using Assets.UNBAIT.Develop.Gameplay.Spawners.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
+namespace Assets.UNBAIT.Develop.Gameplay.Spawners
 {
     public class JunkSpawner : Spawner<Junk>
     {

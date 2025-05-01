@@ -1,5 +1,5 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.Entities;
-using Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts;
+﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement;
+using Assets.UNBAIT.Develop.Gameplay.Entities;
 using System;
 using System.Collections;
 using System.Collections.Generic;

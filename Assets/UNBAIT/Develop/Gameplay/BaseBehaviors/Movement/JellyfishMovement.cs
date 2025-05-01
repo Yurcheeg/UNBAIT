@@ -1,7 +1,6 @@
-﻿using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.EntityScripts
+namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Movement
 {
     [RequireComponent(typeof(MovingEntity))]
     public class JellyfishMovement : MonoBehaviour

@@ -1,10 +1,11 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.Entities;
+using Assets.UNBAIT.Develop.Gameplay.Spawners.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.UI;
 using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
+namespace Assets.UNBAIT.Develop.Gameplay.Spawners
 {
     public class JellyfishSpawner : Spawner<JellyFish>
     {

@@ -1,7 +1,7 @@
 ﻿using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 using UnityEngine;
 
-namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
+namespace Assets.UNBAIT.Develop.Gameplay.Spawners.Abstract
 {
     public abstract class Spawner<T> : MonoBehaviour where T : Entity
     {
