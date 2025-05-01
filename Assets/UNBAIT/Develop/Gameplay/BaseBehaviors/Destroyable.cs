@@ -7,10 +7,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors
     {
         public event Action Destroyed;
 
-        private void OnDestroy()
-        {
-            Destroyed?.Invoke();
-            Destroy(gameObject);
-        }
+        private void OnDestroy() => Destroyed?.Invoke();
     }
 }

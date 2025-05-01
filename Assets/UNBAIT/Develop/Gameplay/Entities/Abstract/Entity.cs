@@ -8,6 +8,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities.Abstract
     {
         public Destroyable Destroyable { get; private set; }
 
-        private void Awake() => Destroyable = GetComponent<Destroyable>();
+        //allows to call base awake in child classes
+        protected virtual void Awake() => Destroyable = GetComponent<Destroyable>();
     }
 }

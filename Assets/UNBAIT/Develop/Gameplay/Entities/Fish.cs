@@ -9,6 +9,10 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
 
         public Movable Movable { get; private set; }
 
-        private void Awake() => Movable = GetComponent<Movable>();
+        protected override void Awake()
+        {
+            base.Awake();
+            Movable = GetComponent<Movable>();
+        }
     }
 }

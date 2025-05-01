@@ -39,6 +39,10 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
             });
         }
 
-        private void Awake() => Animator = GetComponent<Animator>();
+        protected override void Awake()
+        {
+            base.Awake();
+            Animator = GetComponent<Animator>();
+        }
     }
 }

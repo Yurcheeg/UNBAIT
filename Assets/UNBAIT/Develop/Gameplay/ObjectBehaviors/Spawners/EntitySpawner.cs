@@ -1,3 +1,4 @@
+using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
 using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.UI;
 using System.Collections;
@@ -16,8 +17,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
 
         public bool SpawnLimitReached => _count >= _spawnLimit;
 
-        public bool IsDisabled => false;
-
         [ContextMenu("Spawn")]
         public void Spawn() => Spawn(_entityToSpawn);
 
@@ -27,28 +26,39 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
 
             if (entity != null)
             {
-                //subscribes to local OnEntityDestroyed on next Update,
-                //so that Awake in entity that assigns the Destroyable finishes.
-                CustomCoroutine.Instance.WaitThenExecute(-1,
-                    () =>
-                    {
-                        if (entity == null)
-                            return;
-                        if (entity.Destroyable == null)
-                            return;
-
-                        //The local method safely unsubscribes to avoid leaks.
-                        void OnEntityDestroyed()
-                        {
-                            entity.Destroyable.Destroyed -= OnEntityDestroyed;
-                            _count--;
-                        }
-
-                        entity.Destroyable.Destroyed += OnEntityDestroyed;
-                    });
+                _count++;
+                StartCoroutine(WaitUntilDestroyableInitialized(entity));
             }
 
             return entity;
+        }
+
+        private IEnumerator WaitUntilDestroyableInitialized(Entity entity)
+        {
+            //skip a frame to let entity's awake assign destroyable
+            yield return null;
+
+            if (entity == null)
+                yield break;
+
+            if (entity.Destroyable == null)
+                yield break;
+
+            SubscribeToDestroyable(entity);
+        }
+
+
+        private void SubscribeToDestroyable(Entity entity)
+        {
+            Destroyable destroyable = entity.Destroyable;
+
+            void OnDestroyed()
+            {
+                destroyable.Destroyed -= OnDestroyed;
+                _count--;
+            }
+
+            destroyable.Destroyed += OnDestroyed;
         }
 
         private IEnumerator Start()
@@ -57,8 +67,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
             {
                 if (LevelTimer.IsPaused)
                     yield return null;
-                else if (IsDisabled)
-                    yield return null;
                 else if (SpawnLimitReached)
                     yield return null;
                 else
@@ -66,7 +74,6 @@ namespace Assets.UNBAIT.Develop.Gameplay.ObjectBehaviors.Spawners
                     yield return new WaitForSeconds(_spawnDelay);
 
                     Spawn();
-                    _count++;
                 }
             }
         }

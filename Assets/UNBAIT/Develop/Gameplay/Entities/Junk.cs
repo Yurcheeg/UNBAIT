@@ -18,8 +18,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
             _collider.isTrigger = false;
         }
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             if (HasReachedGround == false)
             {
                 _collider = GetComponent<Collider2D>();
