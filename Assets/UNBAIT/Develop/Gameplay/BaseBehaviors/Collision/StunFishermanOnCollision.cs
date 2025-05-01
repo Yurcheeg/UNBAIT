@@ -8,34 +8,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.BaseBehaviors.Collision
     {
         private Entity _entity;
 
-        private void Stun(Fisherman fisherman)
-        {
-            fisherman.Stun();
-
-            Animator animator = fisherman.Animator;
-            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-            animator.SetTrigger("IsShocked");
-
-            CustomCoroutine.Instance.WaitOnConditionThenExecute(
-                () => stateInfo.normalizedTime >= 1f,
-                () =>
-                {
-                    if (animator != null)
-                        animator.SetBool("IsStunned", true);
-                });
-            //TODO: indicate that it's stunned somehow
-
-            CustomCoroutine.Instance.WaitOnConditionThenExecute(
-                () => fisherman.IsStunned == false,
-                () =>
-                {
-                    if (animator != null)
-                        animator.SetBool("IsStunned", false);
-                });
-            //TODO: remove indicator;
-
-        }
+        private void Stun(Fisherman fisherman) => fisherman.Stun();
 
         private void OnCollisionEnter2D(Collision2D collision)
         {

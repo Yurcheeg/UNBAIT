@@ -79,6 +79,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
         protected override void Awake()
         {
             base.Awake();
+
             _movementController = GetComponent<MovementController>();
 
             _movementController.PositionReached += OnPositionReached;

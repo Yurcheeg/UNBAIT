@@ -12,6 +12,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.Entities
         protected override void Awake()
         {
             base.Awake();
+
             Movable = GetComponent<Movable>();
         }
     }
