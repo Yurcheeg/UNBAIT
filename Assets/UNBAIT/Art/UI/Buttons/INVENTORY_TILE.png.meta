@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d96b900210a64f2419a2307988c904c6
+guid: e164a6d21bdaa17439678194ea736247
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4088831155337731914
-    second: BUTTON_RECTANGLE_0
+      213: -1569738226883862184
+    second: INVENTORY_TILE_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BUTTON_RECTANGLE_0
+      name: INVENTORY_TILE_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 32
         y: 0
-        width: 64
-        height: 32
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a4f9470b5427eb830800000000000000
-      internalID: 4088831155337731914
+      spriteID: 8516c34466b273ae0800000000000000
+      internalID: -1569738226883862184
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ee8d16bff7010af4a847edcb9f668af9
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BUTTON_RECTANGLE_0: 4088831155337731914
+      INVENTORY_TILE_0: -1569738226883862184
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

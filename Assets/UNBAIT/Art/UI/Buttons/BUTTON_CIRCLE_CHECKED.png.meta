@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d96b900210a64f2419a2307988c904c6
+guid: dfdfe786ded925d4d9be1cbf3828df30
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4088831155337731914
-    second: BUTTON_RECTANGLE_0
+      213: -8765953919669972440
+    second: BUTTON_CIRCLE_CHECKED_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,7 +52,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 32, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BUTTON_RECTANGLE_0
+      name: BUTTON_CIRCLE_CHECKED_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a4f9470b5427eb830800000000000000
-      internalID: 4088831155337731914
+      spriteID: 822d0a4aa53195680800000000000000
+      internalID: -8765953919669972440
       vertices: []
       indices: 
       edges: []
@@ -138,8 +138,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BUTTON_RECTANGLE_0: 4088831155337731914
+      BUTTON_CIRCLE_CHECKED_0: -8765953919669972440
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

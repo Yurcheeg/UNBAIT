@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d96b900210a64f2419a2307988c904c6
+guid: 339d5ed275fc338439c02d577401f819
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4088831155337731914
-    second: BUTTON_RECTANGLE_0
+      213: 1876810964839415556
+    second: BUTTON_CIRCLE_CROSS_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BUTTON_RECTANGLE_0
+      name: BUTTON_CIRCLE_CROSS_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a4f9470b5427eb830800000000000000
-      internalID: 4088831155337731914
+      spriteID: 40fbfc5f0a5cb0a10800000000000000
+      internalID: 1876810964839415556
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7a81583c45c60c04687afe53981f1788
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BUTTON_RECTANGLE_0: 4088831155337731914
+      BUTTON_CIRCLE_CROSS_0: 1876810964839415556
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
