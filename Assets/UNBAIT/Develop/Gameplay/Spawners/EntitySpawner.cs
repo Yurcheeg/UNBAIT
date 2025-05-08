@@ -2,6 +2,7 @@ using Assets.UNBAIT.Develop.Gameplay.BaseBehaviors;
 using Assets.UNBAIT.Develop.Gameplay.Entities.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.Spawners.Abstract;
 using Assets.UNBAIT.Develop.Gameplay.UI;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -48,6 +49,11 @@ namespace Assets.UNBAIT.Develop.Gameplay.Spawners
             SubscribeToDestroyable(entity);
         }
 
+        private void OnWaveCleared(int count)
+        {
+            if(count > 2)
+                _spawnLimit++;
+        }
 
         private void SubscribeToDestroyable(Entity entity)
         {
@@ -78,5 +84,9 @@ namespace Assets.UNBAIT.Develop.Gameplay.Spawners
                 }
             }
         }
+        private void OnEnable() => LevelTimer.WaveCleared += OnWaveCleared;
+
+        private void OnDisable() => LevelTimer.WaveCleared -= OnWaveCleared;
+
     }
 }

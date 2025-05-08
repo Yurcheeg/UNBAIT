@@ -9,6 +9,7 @@ namespace Assets.UNBAIT.Develop.Gameplay.UI
     public class LevelTimer : MonoBehaviour
     {
         public static event Action Won;
+        public static event Action<int> WaveCleared;
 
         [SerializeField] private float _maxTimeSeconds;
 
@@ -28,6 +29,8 @@ namespace Assets.UNBAIT.Develop.Gameplay.UI
         private Slider _slider;
 
         public float SliderValue => _slider.value;
+
+        public int CurrentWave => _currentWaveCount;
 
         public static bool IsPaused => Time.timeScale == 0f;
 
@@ -65,9 +68,14 @@ namespace Assets.UNBAIT.Develop.Gameplay.UI
                 _currentWaveCount++;
 
                 if (_currentWaveCount > _maxWaveCount)
+                {
                     Won?.Invoke();
+                }
                 else
+                {
                     UpdateText();
+                    WaveCleared?.Invoke(_currentWaveCount);
+                }
 
                 Pause();
             }
